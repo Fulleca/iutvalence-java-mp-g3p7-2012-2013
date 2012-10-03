@@ -1,7 +1,7 @@
-// FIXME déplacer dans un paquetage
-// FIXME compléter le commentaire
+package fr.demineur;
 
 /**
+ * Classe de gestion d'une partie de demineur
  * @Author Lambert & Chaufournais
  */
 
@@ -12,7 +12,10 @@ public class Demineur
 	
 	// FIXME attributs, constructeurs ?
 	
-	// FIXME écrire le commentaire
+	/**
+	 * 
+	 * @return nbmines
+	 */
 	public int nbMines()
 	{
 		int nbmines = 0;
@@ -56,17 +59,6 @@ public class Demineur
 	{
 		this.aPerdu = true;
 	}
-	
-	
-	// FIXME définir le main dans une classe à part
-	// Constructeur par défaut de la classe démineur
-	/**
-	 * Constructeur du jeu Demineur
-	 * @param args 
-	 */
-	public static void main(String[] args)
-	{ 
-        
-    }
+
  }
 	

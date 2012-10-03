@@ -1,4 +1,6 @@
-// FIXME déplacer dans un paquetage
+package fr.demineur;
+
+
 /**
  * Classe utilisée pour la gestion de la grille
  * @author chaufoul
@@ -8,7 +10,10 @@
 
 public class Grille
 {
+	//-----------------------------------------------------------------------
 	// Attributs
+	//-----------------------------------------------------------------------
+	
 	
 	/**
 	 * Nombres de lignes par défaut de la grille
@@ -23,50 +28,60 @@ public class Grille
 	/**
 	 * Nombre de mines par défaut
 	 */
-	private final static int NB_MINES = 10;
+	private final static int NB_MINES_DEFAUT = 10;
 	
-	//FIXME la valeur de l'attribut peut-elle changer une fois l'objet créé ?
-	/**
-	 * largeur grille
-	 */
-	private int largeur;
 
-	//FIXME la valeur de l'attribut peut-elle changer une fois l'objet créé ?
 	/**
 	 * largeur grille
 	 */
-	private int hauteur;
+	private final int largeur;
+
+
+	/**
+	 * largeur grille
+	 */
+	private final int hauteur;
 	
-	//FIXME la valeur de l'attribut peut-elle changer une fois l'objet créé ?
+
 	/**
 	 * nombre de mines dans la grille
 	 */
-	private int nbMines;
+	private final int nbMines;
 
 	// FIXME compléter le commentaire
-	// FIXME visibilité de l'attribut ?
+
 	/**
 	 * Grille de jeu
 	 */
-	public int grille[][];
+	private Cellule[][] grille;
 	
 	
-	// FIXME compléter le commentaire
+	//-----------------------------------------------------------------------
+	// Constructeur
+	//-----------------------------------------------------------------------
+	
+
 	/**
 	 * Constructeur par défaut
+	 * largeur 10 cellules
+	 * hauteur 10 cellules
+	 * nombre de mines 10
 	 */
 	public Grille()
 	{
 		this.largeur = LARGEUR_DEFAUT; 
 		this.hauteur = HAUTEUR_DEFAUT;
-		this.nbMines = NB_MINES;
-		this.grille = new int[LARGEUR_DEFAUT][HAUTEUR_DEFAUT];
+		this.nbMines = NB_MINES_DEFAUT;
+		this.grille = new Cellule[LARGEUR_DEFAUT][HAUTEUR_DEFAUT];
 		
 	}
 	
-	// FIXME compléter le commentaire
+	
+	
+
 	/**
-	 * Constructeur personnalisé
+	 * Constructeur de partie personnalisé
+	 * Le joueur choisi la largeur, la hauteur, et le nombre de mines de la grille.
 	 * @param l
 	 * @param h
 	 * @param m
@@ -75,9 +90,31 @@ public class Grille
 	{		
 		this.largeur = l;
 		this.hauteur = h;
-		this.grille = new int[l][h];
+		this.grille = new Cellule[l][h];
 		this.nbMines = m;
 		
+	}
+
+
+
+
+	public String toString()
+	{
+		String result ="";
+		
+		int i =0;
+		while (i < LARGEUR_DEFAUT)
+		{
+			int j =0;
+			while (j < HAUTEUR_DEFAUT)
+			{
+				grille[i][j] = new Cellule(0);
+				j++;
+			}
+			i++;
+		}
+		
+		return result;
 	}
 	
 	//FIXME méthodes ?

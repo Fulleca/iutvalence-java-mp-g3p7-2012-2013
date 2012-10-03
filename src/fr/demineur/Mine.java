@@ -1,24 +1,32 @@
-// FIXME déplacer dans un paquetage
+package fr.demineur;
+
+
 /**
  * Classe utilisée pour la gestion des mines
  * @author chaufoul
  */
 public class Mine
 {
-	// Attributs
 	
-	//FIXME pertinent ?
-	/**
-	 * Representation d'une mine (nombre 0)
-	 */
-	public int mine;
+	//-----------------------------------------------------------------------
+	// Attributs
+	//-----------------------------------------------------------------------
 	
 	
 	// FIXME ne pas gérer le combre total de mines ici
 	/**
 	 * Nombre de mine présent dans la grille
 	 */
-	public int nombreMine;
+	private int nombreMines;
+	
+	
+	/**
+	 * Constante initialisant le nombre de mines par défaut (10 mines).
+	 * En privé, le joueur ne peut pas changer les données pas défauts.
+	 */
+	private final static int NOMBRE_MINE = 10;
+	
+	
 	
 	/**
 	 * Etat d'une mine (activée ou non)
@@ -26,7 +34,11 @@ public class Mine
 	public boolean estActivee;
 	
 	
+	//-----------------------------------------------------------------------
 	// Définitions des méthodes
+	//-----------------------------------------------------------------------
+	
+	
 	/**
 	 * Défini une mine comme étant activée
 	 */
@@ -35,27 +47,30 @@ public class Mine
 		this.estActivee = true;
 	}
 	
-	 // FIXME respecter les conventions d'écriture
+
 	/**
 	 * Défini une mine comme étant non active
 	 */
-	public void nonactiver()
+	public void nonActiver()
 	{
 		this.estActivee = false;
 	}
 	
 	
+	//-----------------------------------------------------------------------
 	// Constructeur par défaut
+	//-----------------------------------------------------------------------
 	
-	//FIXME compléter le commentaire
+	
 	/**
 	 * Constructeur par défaut d'une mine
+	 * Nombre de mines par défaut dans le jeu (10 mines)
+	 * 
+	 * 
 	 */
 	public Mine()
 	{
-		this.mine = 0;
-		// FIXME définir la valeur par défaut sous la forme d'une constante
-		this.nombreMine = 10;
+		this.nombreMines = NOMBRE_MINE;
 		this.estActivee = false;
 	}
 }
