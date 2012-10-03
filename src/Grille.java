@@ -1,3 +1,4 @@
+// FIXME déplacer dans un paquetage
 /**
  * Classe utilisée pour la gestion de la grille
  * @author chaufoul

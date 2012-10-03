@@ -1,3 +1,4 @@
+// FIXME déplacer dans un paquetage
 /**
  * Classe utilisée pour la gestion des mines
  * @author chaufoul
@@ -53,6 +54,7 @@ public class Mine
 	public Mine()
 	{
 		this.mine = 0;
+		// FIXME définir la valeur par défaut sous la forme d'une constante
 		this.nombreMine = 10;
 		this.estActivee = false;
 	}
