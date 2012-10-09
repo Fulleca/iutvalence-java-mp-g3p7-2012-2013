@@ -1,3 +1,4 @@
+// FIXME donner au paquetage un nom plus évocateur (fr.iutvalence.java.projets.demineur)
 package fr.demineur;
 
 
@@ -20,8 +21,10 @@ public class Cellule
 	
 	/**
 	 * Booléen de visibilité d'une cellule.
-	 * Privé car intuile à connaitre pour le joueur.
+	 *  
+	 *  Privé car intuile à connaitre pour le joueur.
 	 */
+	// FIXME la ligne au dessus est inutile
 	private boolean decouvert;	
 	
 	
@@ -30,6 +33,7 @@ public class Cellule
 	 * Booléen de présence des mines sur une cellule.
 	 * En privé car le joueur ne doit pas en prendre connaissance.
 	 */
+	// FIXME la ligne au dessus est inutile
 	private boolean presenceMine;
 	
 
@@ -90,7 +94,8 @@ public class Cellule
 	// Constructeur
 	//-----------------------------------------------------------------------
 	
-	
+	// FIXME placer le constructeur avant les méthodes
+	// FIXME compléter le commentaire (balises @param)
 	/**
 	 * Constructeur d'une Cellule par défaut.
 	 * Une cellule est couverte par défaut.

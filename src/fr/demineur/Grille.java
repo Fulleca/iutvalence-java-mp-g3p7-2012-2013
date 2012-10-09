@@ -1,6 +1,7 @@
 package fr.demineur;
 
 
+// FIXME détailler le commentaire
 /**
  * Classe utilisée pour la gestion de la grille
  * @author chaufoul
@@ -77,8 +78,7 @@ public class Grille
 	}
 	
 	
-	
-
+	// FIXME corriger et compléter le commentaire
 	/**
 	 * Constructeur de partie personnalisé
 	 * Le joueur choisi la largeur, la hauteur, et le nombre de mines de la grille.
@@ -97,7 +97,7 @@ public class Grille
 
 
 
-
+	// 	FIXME écrire un commentaire
 	public String toString()
 	{
 		String result ="";

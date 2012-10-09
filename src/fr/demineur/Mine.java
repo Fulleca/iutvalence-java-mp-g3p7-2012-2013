@@ -1,6 +1,6 @@
 package fr.demineur;
 
-
+// FIXME détailler le commentaire
 /**
  * Classe utilisée pour la gestion des mines
  * @author chaufoul
@@ -24,6 +24,7 @@ public class Mine
 	 * Constante initialisant le nombre de mines par défaut (10 mines).
 	 * En privé, le joueur ne peut pas changer les données pas défauts.
 	 */
+	// FIXME renommer la constante
 	private final static int NOMBRE_MINE = 10;
 	
 	
@@ -42,6 +43,7 @@ public class Mine
 	/**
 	 * Défini une mine comme étant activée
 	 */
+	// FIXME renommer la méthode
 	public void aciver()
 	{
 		this.estActivee = true;
@@ -51,6 +53,7 @@ public class Mine
 	/**
 	 * Défini une mine comme étant non active
 	 */
+	// FIXME desactiver ?
 	public void nonActiver()
 	{
 		this.estActivee = false;

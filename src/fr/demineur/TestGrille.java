@@ -1,5 +1,6 @@
 package fr.demineur;
 
+// FIXME déplacer dans un autre paquetage
 public class TestGrille
 {
 

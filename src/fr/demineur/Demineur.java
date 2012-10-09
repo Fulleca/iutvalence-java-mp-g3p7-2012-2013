@@ -1,5 +1,6 @@
 package fr.demineur;
 
+// FIXME détailler le commentaire
 /**
  * Classe de gestion d'une partie de demineur
  * @Author Lambert & Chaufournais
