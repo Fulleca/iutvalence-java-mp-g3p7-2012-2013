@@ -76,6 +76,18 @@ public class Grille
 		this.hauteur = HAUTEUR_DEFAUT;
 		this.nbMines = NB_MINES_DEFAUT;
 		this.grille = new Cellule[LARGEUR_DEFAUT][HAUTEUR_DEFAUT];
+		
+		int bas =0;
+		while (bas < LARGEUR_DEFAUT)
+		{
+			int droite =0;
+			while (droite < HAUTEUR_DEFAUT)
+			{
+				grille[bas][droite] = new Cellule();
+				droite++;
+			}
+			bas++;
+		}
 	}
 	
 	
@@ -94,6 +106,17 @@ public class Grille
 		this.grille = new Cellule[l][h];
 		this.nbMines = m;
 		
+		int bas = 0;
+			while (bas < l)
+			{
+				int droite =0;
+				while (droite < h)
+				{
+					grille[bas][droite] = new Cellule();
+					droite++;
+				}
+				bas++;
+			}		
 	}
 
 
@@ -110,14 +133,16 @@ public class Grille
 		String result ="";
 		
 		int bas =0;
-		while (bas < LARGEUR_DEFAUT)
+		while (bas < this.LARGEUR_DEFAUT)
 		{
 			int droite =0;
-			while (droite < HAUTEUR_DEFAUT)
+			while (droite < this.HAUTEUR_DEFAUT)
 			{
-				grille[bas][droite] = new Cellule(bas,droite);
+				result = result + "|" + grille[bas][droite].toString() +"|";
+				
 				droite++;
 			}
+			result=result+"\n";
 			bas++;
 		}
 		

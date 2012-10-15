@@ -53,13 +53,13 @@ public class Cellule
 	 * Constructeur d'une Cellule par défaut.
 	 * Une cellule est couverte par défaut.
 	 * Le nombre de mine aux alentours reste à 0 tant que l'on ne clique pas sur la cellule.
-	 * @param x
-	 * @param y
 	 */
-	public Cellule(int x, int y)
+	public Cellule()
 	{
 		this.decouvert = true;
 		this.nbMines = 0;
+
+		
 	}
 	
 	
@@ -106,6 +106,20 @@ public class Cellule
 		public void nonMine()
 		{
 			this.presenceMine=false;
+		}
+
+
+
+		public String toString()
+		{
+			String result ="";
+			
+			if (this.decouvert)
+				result = result + ("+"+ nbMines);
+			else
+				result = result + ("-"+ nbMines);
+		
+			return result;
 		}
 
 	
