@@ -1,7 +1,7 @@
 package fr.iutvalence.java.projets.demineur;
 
 
-// FIXME détailler le commentaire
+// FIXME détailler le commentaire FIXED
 /**
  * Classe permettant de gérer une grille
  * A l'aide d'une largeur, une hauteur, un nombre de mine
@@ -38,10 +38,10 @@ public class Grille
 	 * largeur grille
 	 */
 	private final int largeur;
-
-
+	
+	
 	/**
-	 * largeur grille
+	 * hauteur grille
 	 */
 	private final int hauteur;
 	
@@ -72,15 +72,14 @@ public class Grille
 	 */
 	public Grille()
 	{
-		this.largeur = LARGEUR_DEFAUT; 
+		this.largeur = LARGEUR_DEFAUT;
 		this.hauteur = HAUTEUR_DEFAUT;
 		this.nbMines = NB_MINES_DEFAUT;
 		this.grille = new Cellule[LARGEUR_DEFAUT][HAUTEUR_DEFAUT];
-		
 	}
 	
 	
-	// FIXME corriger et compléter le commentaire  (FIXED)
+	// FIXME corriger et compléter le commentaire  FIXED
 	/**
 	 * Constructeur de la grille de jeu personnalisée
 	 * Le joueur choisi la largeur "l", la hauteur "h", et le nombre de mines de la grille "m".
@@ -89,7 +88,7 @@ public class Grille
 	 * @param m
 	 */
 	public Grille(int l, int h, int m)
-	{		
+	{	
 		this.largeur = l;
 		this.hauteur = h;
 		this.grille = new Cellule[l][h];
@@ -102,23 +101,24 @@ public class Grille
 	// 	FIXME écrire un commentaire  FIXED
 	
 	/*
-	 * Parcours de notre grille pour créer toute nos cellules initialisées à 0.
+	 * Parcours de notre grille pour créer toute nos cellules
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString()
 	{
 		String result ="";
 		
-		int i =0;
-		while (i < LARGEUR_DEFAUT)
+		int bas =0;
+		while (bas < LARGEUR_DEFAUT)
 		{
-			int j =0;
-			while (j < HAUTEUR_DEFAUT)
+			int droite =0;
+			while (droite < HAUTEUR_DEFAUT)
 			{
-				grille[i][j] = new Cellule(0);
-				j++;
+				grille[bas][droite] = new Cellule(bas,droite);
+				droite++;
 			}
-			i++;
+			bas++;
 		}
 		
 		return result;

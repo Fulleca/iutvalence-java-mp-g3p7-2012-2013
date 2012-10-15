@@ -1,8 +1,11 @@
 package fr.iutvalence.java.projets.demineur;
 
-// FIXME détailler le commentaire
+// FIXME détailler le commentaire  FIXED
 /**
  * Classe de gestion d'une partie de demineur
+ * classe qui reprendra les autres classes pour pouvoir jouer
+ * 
+ * stardust00 <setsuna00ql@gmail.com>
  * @Author Lambert & Chaufournais
  */
 
