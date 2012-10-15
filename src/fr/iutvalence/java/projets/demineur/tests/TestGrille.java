@@ -1,6 +1,8 @@
-package fr.demineur;
+package fr.iutvalence.java.projets.demineur.tests;
 
-// FIXME déplacer dans un autre paquetage
+import fr.iutvalence.java.projets.demineur.Grille;
+
+// FIXME déplacer dans un autre paquetage  FIXED
 public class TestGrille
 {
 

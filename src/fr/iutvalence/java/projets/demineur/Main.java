@@ -1,5 +1,5 @@
 // FIXME déplacer dans un autre paquetage
-package fr.demineur;
+package fr.iutvalence.java.projets.demineur;
 /**
  * Constructeur du jeu Demineur
  * @param args 

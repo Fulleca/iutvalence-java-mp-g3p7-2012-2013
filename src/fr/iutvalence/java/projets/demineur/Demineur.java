@@ -1,4 +1,4 @@
-package fr.demineur;
+package fr.iutvalence.java.projets.demineur;
 
 // FIXME détailler le commentaire
 /**

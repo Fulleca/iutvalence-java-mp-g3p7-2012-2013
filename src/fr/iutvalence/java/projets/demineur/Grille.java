@@ -1,9 +1,11 @@
-package fr.demineur;
+package fr.iutvalence.java.projets.demineur;
 
 
 // FIXME détailler le commentaire
 /**
- * Classe utilisée pour la gestion de la grille
+ * Classe permettant de gérer une grille
+ * A l'aide d'une largeur, une hauteur, un nombre de mine
+ * Pouvant être défini par défaut ou être personalisé
  * @author chaufoul
  */
 
@@ -49,10 +51,10 @@ public class Grille
 	 */
 	private final int nbMines;
 
-	// FIXME compléter le commentaire
-
 	/**
 	 * Grille de jeu
+	 * Jeu à 2 dimensions
+	 * Tableau dans un tableau géré par une "largeur" et une "hauteur"
 	 */
 	private Cellule[][] grille;
 	
@@ -78,10 +80,10 @@ public class Grille
 	}
 	
 	
-	// FIXME corriger et compléter le commentaire
+	// FIXME corriger et compléter le commentaire  (FIXED)
 	/**
-	 * Constructeur de partie personnalisé
-	 * Le joueur choisi la largeur, la hauteur, et le nombre de mines de la grille.
+	 * Constructeur de la grille de jeu personnalisée
+	 * Le joueur choisi la largeur "l", la hauteur "h", et le nombre de mines de la grille "m".
 	 * @param l
 	 * @param h
 	 * @param m
@@ -97,7 +99,12 @@ public class Grille
 
 
 
-	// 	FIXME écrire un commentaire
+	// 	FIXME écrire un commentaire  FIXED
+	
+	/*
+	 * Parcours de notre grille pour créer toute nos cellules initialisées à 0.
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString()
 	{
 		String result ="";
