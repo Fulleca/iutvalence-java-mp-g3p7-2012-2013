@@ -1,12 +1,12 @@
 package fr.iutvalence.java.projets.demineur.tests;
 
 import fr.iutvalence.java.projets.demineur.Grille;
-import fr.iutvalence.java.projets.demineur.Cellule;
 
-// FIXME déplacer dans un autre paquetage  FIXED
+// FIXME écrire un commentaire
 public class TestGrille
 {
 
+	// FIXME compléter le commentaire
 	/**
 	 * @param args
 	 */

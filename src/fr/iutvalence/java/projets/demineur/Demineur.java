@@ -1,6 +1,5 @@
 package fr.iutvalence.java.projets.demineur;
 
-// FIXME détailler le commentaire  FIXED
 /**
  * Classe de gestion d'une partie de demineur
  * classe qui reprendra les autres classes pour pouvoir jouer
@@ -16,6 +15,7 @@ public class Demineur
 	
 	// FIXME attributs, constructeurs ?
 	
+	// FIXME compléter le commentaire
 	/**
 	 * 
 	 * @return nbmines
@@ -41,7 +41,7 @@ public class Demineur
 	}
 	
 	
-
+	// FIXME déplacer les définitions des attributs avant celles des constructeurs
 	/**
 	 * Booléen spécifiant si le joueur a perdu
 	 */

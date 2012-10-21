@@ -1,6 +1,5 @@
 package fr.iutvalence.java.projets.demineur;
 
-// FIXME détailler le commentaire  FIXED
 /**
  * Classe utilisée pour la gestion des mines
  * Classe surement inutile par la suite
@@ -26,11 +25,9 @@ public class Mine
 	 * Constante initialisant le nombre de mines par défaut (10 mines).
 	 * En privé, le joueur ne peut pas changer les données pas défauts.
 	 */
-	// FIXME renommer la constante  FIXED
+	// FIXME à déplacer dans grille ?
 	private final static int NOMBRE_MINE_DEFAUT = 10;
-	
-	
-	
+		
 	/**
 	 * Etat d'une mine (activée ou non)
 	 */
@@ -43,9 +40,8 @@ public class Mine
 	
 	
 	/**
-	 * Défini une mine comme étant activée
+	 * Définit une mine comme étant activée
 	 */
-	// FIXME renommer la méthode FIXED
 	public void activer()
 	{
 		this.estActivee = true;
@@ -55,7 +51,6 @@ public class Mine
 	/**
 	 * Défini une mine comme étant non active
 	 */
-	// FIXME desactiver ? FIXED
 	public void desactiver()
 	{
 		this.estActivee = false;
@@ -66,6 +61,7 @@ public class Mine
 	// Constructeur par défaut
 	//-----------------------------------------------------------------------
 	
+	// FIXME déplacer le constructeur avant les méthodes
 	
 	/**
 	 * Constructeur par défaut d'une mine
@@ -78,4 +74,7 @@ public class Mine
 		this.nombreMines = NOMBRE_MINE_DEFAUT;
 		this.estActivee = false;
 	}
+	
+	
+	// FIXME redéfinir toString
 }

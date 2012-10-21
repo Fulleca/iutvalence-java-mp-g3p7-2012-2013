@@ -31,7 +31,6 @@ public class Cellule
 	/**
 	 * Booléen de présence des mines sur une cellule.
 	 */
-	// FIXME la ligne au dessus est inutile FIXED
 	private boolean presenceMine;
 	
 
@@ -47,8 +46,6 @@ public class Cellule
 	// Constructeur
 	//-----------------------------------------------------------------------
 	
-	// FIXME placer le constructeur avant les méthodes  FIXED
-	// FIXME compléter le commentaire (balises @param)  FIXED
 	/**
 	 * Constructeur d'une Cellule par défaut.
 	 * Une cellule est couverte par défaut.
@@ -58,7 +55,7 @@ public class Cellule
 	{
 		this.decouvert = true;
 		this.nbMines = 0;
-
+		// FIXME tous les attributs doivent être initialisé
 		
 	}
 	
@@ -71,7 +68,6 @@ public class Cellule
 
 		/**
 		 * Méthode spécifiant le contenu une cellule comme étant découverte (visible)
-		 * @param Auncun
 		 */
 		public void decouverte()
 		{
@@ -81,7 +77,6 @@ public class Cellule
 		
 		/**
 		 * Méthode spécifiant le contenu une cellule comme étant couverte (caché)
-		 * @param Auncun
 		 */
 		public void couverte()
 		{
@@ -91,7 +86,6 @@ public class Cellule
 
 		/**
 		 * Méthode spécifiant qu'une mine est présente "sous" la cellule caché.
-		 * @param Auncun
 		 */
 		public void ouiMine()
 		{
@@ -101,7 +95,6 @@ public class Cellule
 
 		/**
 		 * Méthode spécifiant qu'aucune mine n'est présente "sous" la cellule caché.
-		 * @param Auncun
 		 */
 		public void nonMine()
 		{
@@ -109,7 +102,10 @@ public class Cellule
 		}
 
 
-
+		// FIXME compléter le commentaire
+		/**
+		 * @see java.lang.Object#toString()
+		 */
 		public String toString()
 		{
 			String result ="";
@@ -120,8 +116,6 @@ public class Cellule
 				result = result + ("-"+ nbMines);
 		
 			return result;
-		}
-
-	
+		}	
 }
 	

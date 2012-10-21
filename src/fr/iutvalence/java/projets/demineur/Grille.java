@@ -1,7 +1,5 @@
 package fr.iutvalence.java.projets.demineur;
 
-
-// FIXME détailler le commentaire FIXED
 /**
  * Classe permettant de gérer une grille
  * A l'aide d'une largeur, une hauteur, un nombre de mine
@@ -91,7 +89,7 @@ public class Grille
 	}
 	
 	
-	// FIXME corriger et compléter le commentaire  FIXED
+	// FIXME corriger et compléter le commentaire
 	/**
 	 * Constructeur de la grille de jeu personnalisée
 	 * Le joueur choisi la largeur "l", la hauteur "h", et le nombre de mines de la grille "m".
@@ -121,9 +119,9 @@ public class Grille
 
 
 
-	// 	FIXME écrire un commentaire  FIXED
+	// 	FIXME corriger le commentaire  (à discuter)
 	
-	/*
+	/**
 	 * Parcours de notre grille pour créer toute nos cellules
 	 * 
 	 * @see java.lang.Object#toString()
@@ -147,10 +145,5 @@ public class Grille
 		}
 		
 		return result;
-	}
-	
-	//FIXME méthodes ?
-	
-	
-	
+	}	
 }
