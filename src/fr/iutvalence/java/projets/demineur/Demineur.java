@@ -36,7 +36,7 @@ public class Demineur
 	 * algo de recherche pour une cellule choisie, du nombre de mine autour de celle ci
 	 * @return nbmines
 	 */
-	public int nbMines()
+	public int nbMinesVoisines()
 	{
 		int nbmines = 0;
 		int j = -1;

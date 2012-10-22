@@ -39,7 +39,7 @@ public class Cellule
 	 * Valeur indiquant le nombre de mines aux alentours de la cellule ciblé 
 	 * (si celle-ci ne contenait déja pas une mine)
 	 */
-	public int nbMines;
+	public int nbMinesVoisines;
 		
 	
 	//-----------------------------------------------------------------------
@@ -54,12 +54,18 @@ public class Cellule
 	public Cellule()
 	{
 		this.decouvert = true;
-		this.nbMines = 0;
-		// FIXME tous les attributs doivent être initialisé
+		this.nbMinesVoisines = 0;
+		this.presenceMine = false;
+		// FIXME tous les attributs doivent être initialisé   FIXED
 		
 	}
 	
-	
+	public Cellule(boolean d, int nb, boolean p)
+	{
+		this.decouvert = d;
+		this.nbMinesVoisines = nb;
+		this.presenceMine = p;
+	}
 	
 	//-----------------------------------------------------------------------
 	// Methode
@@ -86,12 +92,13 @@ public class Cellule
 
 		/**
 		 * Méthode spécifiant qu'une mine est présente "sous" la cellule caché.
+		 * @return 
 		 */
 		public void ouiMine()
 		{
 			this.presenceMine=true;
 		}
-		
+			
 
 		/**
 		 * Méthode spécifiant qu'aucune mine n'est présente "sous" la cellule caché.
@@ -102,8 +109,11 @@ public class Cellule
 		}
 
 
-		// FIXME compléter le commentaire
+		// FIXME compléter le commentaire    FIXED
 		/**
+		 * On retourne une chaine de caractère représentant notre objet, ici nos cellules
+		 * Avec un "+" si la cellule est couverte
+		 * Ou un "-" si la cellule est decouverte
 		 * @see java.lang.Object#toString()
 		 */
 		public String toString()
@@ -111,11 +121,15 @@ public class Cellule
 			String result ="";
 			
 			if (this.decouvert)
-				result = result + ("+"+ nbMines);
+				if (this.presenceMine)
+					result = result + ("+"+ nbMinesVoisines + "¤");
+				else
+					result = result + ("+"+ nbMinesVoisines + " ");
 			else
-				result = result + ("-"+ nbMines);
+				result = result + ("-"+ nbMinesVoisines);
 		
 			return result;
 		}	
+		
 }
 	

@@ -6,14 +6,14 @@ package fr.iutvalence.java.projets.demineur;
  * Constructeur du jeu Demineur
  */
 // FIXME renommer la classe
-public class Main
+/*public class Main
 {
 	
 	/**
 	 * Méthode pour tester la création d'une grille en mode console 
 	 * @param args
 	 */
-	public static void main(String[] args)
+	/*public static void main(String[] args)
 	{ 
 	    return null;
 	}
