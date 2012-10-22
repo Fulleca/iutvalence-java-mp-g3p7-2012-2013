@@ -112,7 +112,7 @@ public class Grille
 		/*--------------------Algo nombre de Mine voisine-----------------------
 		/*--------------------------------------------------------------------*/
 		
-		
+		/*
 		int nbMinesVoisines = 0;
 		int j = -1;
 		while (j < 2)
@@ -130,8 +130,8 @@ public class Grille
 		}
 
 	}
-	
-	
+	*/
+	}
 	// FIXME corriger et compléter le commentaire    FIXED
 	/**
 	 * Constructeur de la grille de jeu personnalisée

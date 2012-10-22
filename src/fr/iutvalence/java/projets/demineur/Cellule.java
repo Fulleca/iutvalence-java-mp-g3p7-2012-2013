@@ -1,135 +1,148 @@
 // FIXME donner au paquetage un nom plus évocateur (fr.iutvalence.java.projets.demineur) FIXED
+
 package fr.iutvalence.java.projets.demineur;
 
 
 /**
- * 
- * Classe cellule, gère l'état des cellules.
- * Si couverte/découverte, miné ou non.
- * 
+ * Classe cellule qui gère l'état d'une cellule, c'est-à-dire si une cellule est cacher, visible et 
+ * si celle-ci contient ou non une mine.
+ * ATTRIBUTS : decouvert, presenceMine, nbMinesVoisines
+ * CONSTRUCTEURS : Cellule(), Cellule(boolean d, int nb, boolean p)
+ * METHODES : visible(), cacher(), ouiMine(), nonMine(), toString()
  * @author chaufoul
- *
+ * @version 22/10/12
  */
 public class Cellule
 {
 	
 	//-----------------------------------------------------------------------
-	// Attribut
+	// <---- Attributs ---->
 	//-----------------------------------------------------------------------
-	
-	
-	
+
 	/**
-	 * Booléen de visibilité d'une cellule.
-	 *  
+	 * Booléen spécifiant la visibilité d'une cellule.  
 	 */
 	// FIXME la ligne au dessus est inutile FIXED
-	private boolean decouvert;	
-	
-	
+	private boolean visible;	
 	
 	/**
-	 * Booléen de présence des mines sur une cellule.
+	 * Booléen spécifiant si une mine est présente ou non sur une cellule.
 	 */
 	private boolean presenceMine;
 	
-
-
 	/**
-	 * Valeur indiquant le nombre de mines aux alentours de la cellule ciblé 
+	 * Valeur indiquant le nombre de mines se trouvant aux alentours d'une cellule
 	 * (si celle-ci ne contenait déja pas une mine)
 	 */
 	public int nbMinesVoisines;
 		
 	
 	//-----------------------------------------------------------------------
-	// Constructeur
+	// <---- Constructeurs ---->
 	//-----------------------------------------------------------------------
 	
 	/**
 	 * Constructeur d'une Cellule par défaut.
-	 * Une cellule est couverte par défaut.
-	 * Le nombre de mine aux alentours reste à 0 tant que l'on ne clique pas sur la cellule.
+	 * Par defaut, une cellule est caché.
+	 * Le nombre de mines aux alentours reste à 0 tant que l'on ne clique pas sur la cellule.
 	 */
 	public Cellule()
 	{
-		this.decouvert = true;
+		this.visible = false;
 		this.nbMinesVoisines = 0;
 		this.presenceMine = false;
 		// FIXME tous les attributs doivent être initialisé   FIXED
-		
 	}
 	
+	/**
+	 * Constructeur d'une Cellule ayant trois paramètres.
+	 * @param d - Visibilité de la cellule ( true ou false)
+	 * @param nb - Nombre de mines aux alentours de la cellule
+	 * @param p - Boolée spécifiant si la cellule contient une mine
+	 */
 	public Cellule(boolean d, int nb, boolean p)
 	{
-		this.decouvert = d;
+		this.visible = d;
 		this.nbMinesVoisines = nb;
 		this.presenceMine = p;
 	}
 	
 	//-----------------------------------------------------------------------
-	// Methode
+	// <---- Méthodes ---->
 	//-----------------------------------------------------------------------
 
+	/**
+	 * Méthode spécifiant qu'une cellule est visible
+	 */
+	public void visible()
+	{
+		this.visible = true;
+	}
 
-		/**
-		 * Méthode spécifiant le contenu une cellule comme étant découverte (visible)
-		 */
-		public void decouverte()
-		{
-			this.decouvert = false;
-		}
+	/**
+	 * Méthode spécifiant qu'une cellule est caché
+	 */
+	public void cacher()
+	{
+		this.visible = false;
+	}
 
+	/**
+	* Méthode spécifiant qu'une mine est présente "sous" une cellule
+	*/
+	public void ouiMine()
+	{
+		this.presenceMine = true;
+	}
 		
-		/**
-		 * Méthode spécifiant le contenu une cellule comme étant couverte (caché)
-		 */
-		public void couverte()
-		{
-			this.decouvert = true;
-		}
+	/**
+	* Méthode spécifiant qu'aucune mine n'est présente "sous" une cellule
+	*/
+	public void nonMine()
+	{
+		this.presenceMine = false;
+	}
 
-
-		/**
-		 * Méthode spécifiant qu'une mine est présente "sous" la cellule caché.
-		 * @return 
-		 */
-		public void ouiMine()
-		{
-			this.presenceMine=true;
-		}
+	// FIXME compléter le commentaire    FIXED
+	/**
+	* On retourne une chaine de caractère représentant notre objet, ici nos cellules
+	* Si la cellule est visible, nous l'afficherons par le signe "+", sinon, c'est que la cellule est caché (représenté par "-") 
+	* Nous representerons le fait qu'ne cellule contienne une mine par le symbole "¤"
+	* @return result - Chaîne de caractère représentant une mine 
+	*/
+	public String toString()
+	{
+		String result = "";
 			
-
-		/**
-		 * Méthode spécifiant qu'aucune mine n'est présente "sous" la cellule caché.
-		 */
-		public void nonMine()
-		{
-			this.presenceMine=false;
-		}
-
-
-		// FIXME compléter le commentaire    FIXED
-		/**
-		 * On retourne une chaine de caractère représentant notre objet, ici nos cellules
-		 * Avec un "+" si la cellule est couverte
-		 * Ou un "-" si la cellule est decouverte
-		 * @see java.lang.Object#toString()
-		 */
-		public String toString()
-		{
-			String result ="";
-			
-			if (this.decouvert)
-				if (this.presenceMine)
-					result = result + ("+"+ nbMinesVoisines + "¤");
-				else
-					result = result + ("+"+ nbMinesVoisines + " ");
+		if (this.visible)
+		{	
+			if (this.presenceMine)
+			{	
+				result = result + ("+" + "¤");
+			}	
 			else
-				result = result + ("-"+ nbMinesVoisines);
-		
-			return result;
+			{	
+				result = result + ("+" + nbMinesVoisines + " ");
+			}
+		}	
+		else
+		{	
+			result = result + ("-" + nbMinesVoisines);
 		}	
 		
+		return result;
+	}	
+	
+	//-----------------------------------------------------------------------
+	// <---- Accesseurs ---->
+	//-----------------------------------------------------------------------
+	
+	// A voir
+	
+	//-----------------------------------------------------------------------
+	// <---- Mutateurs ---->
+	//-----------------------------------------------------------------------
+	
+	// Eventuellement
 }
 	

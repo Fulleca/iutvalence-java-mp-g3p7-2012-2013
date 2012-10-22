@@ -19,9 +19,6 @@ public class TestGrille
 	public static void main(String[] args)
 	{
 		System.out.println(new Grille().toString());
-		
-		
-
 	}
 
 }
