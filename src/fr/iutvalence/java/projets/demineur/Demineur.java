@@ -12,12 +12,28 @@ package fr.iutvalence.java.projets.demineur;
 public class Demineur
 {
 	
+	//-----------------------------------------------------------------------
+	// Attributs
+	//-----------------------------------------------------------------------
+		
 	
-	// FIXME attributs, constructeurs ?
-	
-	// FIXME compléter le commentaire
+	// FIXME déplacer les définitions des attributs avant celles des constructeurs   FIXED
 	/**
-	 * 
+	 * Booléen spécifiant si le joueur a perdu
+	 */
+	public boolean aPerdu;
+	
+	
+	
+	//-----------------------------------------------------------------------
+	// Constructeur
+	//-----------------------------------------------------------------------
+	
+	// FIXME attributs, constructeurs ?   FIXED
+	
+	// FIXME compléter le commentaire   FIXED
+	/**
+	 * algo de recherche pour une cellule choisie, du nombre de mine autour de celle ci
 	 * @return nbmines
 	 */
 	public int nbMines()
@@ -41,13 +57,13 @@ public class Demineur
 	}
 	
 	
-	// FIXME déplacer les définitions des attributs avant celles des constructeurs
-	/**
-	 * Booléen spécifiant si le joueur a perdu
-	 */
-	public boolean aPerdu;
+
 	
-	// Définitions des méthodes
+	//-----------------------------------------------------------------------
+	// Methodes
+	//-----------------------------------------------------------------------
+	
+	
 	/**
 	 * Défini la partie comme étant perdue
 	 */
