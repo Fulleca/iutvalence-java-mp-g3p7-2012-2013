@@ -18,7 +18,15 @@ public class TestGrille
 	 */
 	public static void main(String[] args)
 	{
-		System.out.println(new Grille().toString());
+		Grille Essai = new Grille();
+		
+		System.out.println(Essai.toString());
+		System.out.print("Hauteur de la grille : ");
+		System.out.println(Essai.getHauteur());
+		System.out.print("Largeur de la grille : ");
+		System.out.println(Essai.getLargeur());
+		System.out.print("Nombres de mines de la grille : ");
+		System.out.println(Essai.getNbMines());
 	}
 
 }

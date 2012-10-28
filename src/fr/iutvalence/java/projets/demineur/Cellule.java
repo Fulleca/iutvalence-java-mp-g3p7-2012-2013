@@ -6,11 +6,13 @@ package fr.iutvalence.java.projets.demineur;
 /**
  * Classe cellule qui gère l'état d'une cellule, c'est-à-dire si une cellule est cacher, visible et 
  * si celle-ci contient ou non une mine.
- * ATTRIBUTS : decouvert, presenceMine, nbMinesVoisines
+ * ATTRIBUTS : visible, presenceMine, nbMinesVoisines
  * CONSTRUCTEURS : Cellule(), Cellule(boolean d, int nb, boolean p)
  * METHODES : visible(), cacher(), ouiMine(), nonMine(), toString()
+ * ACCESSEURS : getVisibilite(), getPresenceMine(), getNbMinesVoisines()
+ * MUTATEURS : setVisibilite(boolean visible), setPresenceMine(boolean presenceMine), setNbMinesVoisines(int nbMinesVoisines)
+
  * @author chaufoul
- * @version 22/10/12
  */
 public class Cellule
 {
@@ -137,12 +139,64 @@ public class Cellule
 	// <---- Accesseurs ---->
 	//-----------------------------------------------------------------------
 	
-	// A voir
+	/**
+	 * Accesseur renvoyant un booléen. Si renvoie "True", alors la cellule est visible, sinon
+	 * celle-ci est "caché".
+	 * @return visible - boolean
+	 */
+	public boolean getVisibilite()
+	{
+		return this.visible;
+	}
+	
+	/**
+	 * Accesseur renvoyant un booléen. Si renvoie "True", alors la cellule contient une mine,
+	 * sinon celle-ci n'en contient pas.
+	 * @return presenceMine - boolean
+	 */
+	public boolean getPresenceMine()
+	{
+		return this.presenceMine;
+	}
+	
+	/**
+	 * Accesseur renvoyant un entien.
+	 * @return nbMinesVoisines - entier représentant le nombres de mines voisines.
+	 */
+	public int getNbMinesVoisines()
+	{
+		return this.nbMinesVoisines;
+	}
 	
 	//-----------------------------------------------------------------------
 	// <---- Mutateurs ---->
 	//-----------------------------------------------------------------------
 	
-	// Eventuellement
+	/**
+	 * Mutateur permettant de modifier l'attribut visible
+	 */
+	public void setVisibilite(boolean visible)
+	{
+		this.visible = visible;
+	}
+	
+	/**
+	 * Mutateur permettant de modifier l'attribut presenceMine
+	 * @param presenceMine
+	 */
+	public void setPresenceMine(boolean presenceMine)
+	{
+		this.presenceMine = presenceMine;
+	}
+	
+	/**
+	 * Mutateur permettant de modifier l'attribut NbMinesVoisines
+	 * @param nbMinesVoisines
+	 */
+	public void setNbMinesVoisines(int nbMinesVoisines)
+	{
+		this.nbMinesVoisines = nbMinesVoisines;
+	}
+	
 }
 	

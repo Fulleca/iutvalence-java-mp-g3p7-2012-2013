@@ -3,20 +3,21 @@ package fr.iutvalence.java.projets.demineur;
 import java.util.Random;
 
 /**
- * Classe permettant de gérer une grille
- * A l'aide d'une largeur, une hauteur, un nombre de mine
- * Pouvant être défini par défaut ou être personalisé
+ * Classe Grille permettant la gestion d'une grille défini par une largeur, une hauter et un nombre de mines
+ * Une grille peut être personnalisée
+ * CONSTANTES : LARGEUR_DEFAUT, HAUTEUR_DEFAUT, NB_MINES_DEFAUT
+ * ATTRIBUTS : largeur, hauteur, nbMines, grille
+ * CONSTRUCTEURS : Grille(), Grille(int l, int h, int m)
+ * METHODES : toString()
+ * ACCESSEURS : getLargeur(), getHauteur(), getNbMines
  * @author chaufoul
  */
-
-
-
-public class Grille
+public class Grille 
 {
-	//-----------------------------------------------------------------------
-	// Attributs
-	//-----------------------------------------------------------------------
 	
+	//-----------------------------------------------------------------------
+	// <---- Constantes ---->
+	//-----------------------------------------------------------------------
 	
 	/**
 	 * Nombres de lignes par défaut de la grille
@@ -29,55 +30,53 @@ public class Grille
 	private final static int HAUTEUR_DEFAUT = 10;
 	
 	/**
-	 * Nombre de mines par défaut
+	 * Nombre de mines par défaut dans la grille
 	 */
 	private final static int NB_MINES_DEFAUT = 10;
 	
-
+	//-----------------------------------------------------------------------
+	// <---- Attributs ---->
+	//-----------------------------------------------------------------------
+	
 	/**
-	 * largeur grille
+	 * Largeur de la grille
 	 */
 	private final int largeur;
 	
-	
 	/**
-	 * hauteur grille
+	 * Hauteur de la grille
 	 */
 	private final int hauteur;
 	
-
 	/**
-	 * nombre de mines dans la grille
+	 * Nombre de mines présents das la grille
 	 */
 	private final int nbMines;
 
 	/**
-	 * Grille de jeu
-	 * Jeu à 2 dimensions
-	 * Tableau dans un tableau géré par une "largeur" et une "hauteur"
+	 * Grille de jeu représenté par un tableau de Cellule à deux dimensions
+	 * Le tableau est gérée par ses coordonnées (largeur et hauteur)
 	 */
 	private Cellule[][] grille;
 	
-	
 	//-----------------------------------------------------------------------
-	// Constructeur
+	// <---- Constructeurs ---->
 	//-----------------------------------------------------------------------
 	
-
 	/**
-	 * Constructeur par défaut
-	 * largeur 10 cellules
-	 * hauteur 10 cellules
-	 * nombre de mines 10
-	 */
+	* Constructeur par défaut d'une grille 
+	* Une largeur de 10 cellules, une hauteur de 10 cellules et un nombres de mines égal à 10.
+	*/
 	public Grille()
 	{
+		/* Initialisation des attributs */
 		this.largeur = LARGEUR_DEFAUT;
 		this.hauteur = HAUTEUR_DEFAUT;
 		this.nbMines = NB_MINES_DEFAUT;
+		/* Instanciation d'une objet cellule */
 		this.grille = new Cellule[LARGEUR_DEFAUT][HAUTEUR_DEFAUT];
 		
-		int bas =0;
+		int bas = 0;
 		while (bas < largeur)
 		{
 			int droite =0;
@@ -89,29 +88,22 @@ public class Grille
 			bas++;
 		}
 		
-		/*----------------------------------------------------------------------
-		/*--------------------Generateur Aléatoire de mines---------------------
-		/*--------------------------------------------------------------------*/
+		//--------------------------------------
+		//--- Géneration aléatoire des mines ---
+		//--------------------------------------
+		Random mineAleatoire = new Random();
+		int mineGenerer = 0;
 		
-		
-		/**
-		 * random va nous servir a générer aléatoirement nos mines dans la grille
-		 */
-		Random random = new Random();
-		int mineGenerer =0;
-		
-		while (mineGenerer < nbMines+1)
+		while (mineGenerer < nbMines + 1)
 		{
-			this.grille[random.nextInt(largeur)][random.nextInt(hauteur)] = 
+			this.grille[mineAleatoire.nextInt(largeur)][mineAleatoire.nextInt(hauteur)] = 
 					new Cellule(true,0,true);
 			mineGenerer++;
 		}
 		
-		
-		/*----------------------------------------------------------------------
-		/*--------------------Algo nombre de Mine voisine-----------------------
-		/*--------------------------------------------------------------------*/
-		
+		//---------------------------------------
+		//--- Algorithme de recherche de mine ---
+		//---------------------------------------
 		/*
 		int nbMinesVoisines = 0;
 		int j = -1;
@@ -128,68 +120,69 @@ public class Grille
 			}
 		j = j+1;
 		}
-
+		 */	
 	}
-	*/
-	}
+	
 	// FIXME corriger et compléter le commentaire    FIXED
 	/**
 	 * Constructeur de la grille de jeu personnalisée
 	 * Le joueur choisi la largeur "l", la hauteur "h", et le nombre de mines de la grille "m"
 	 * pour créer sa grille personnalisé
-	 * @param l    largeur
-	 * @param h    hauteur
-	 * @param m    nombre de mines
+	 * @param l    largeur de la grille
+	 * @param h    hauteur de la grille
+	 * @param m    nombre de mines de la grille
 	 */
 	public Grille(int l, int h, int m)
-	{	
+	{
 		this.largeur = l;
 		this.hauteur = h;
 		this.grille = new Cellule[l][h];
 		this.nbMines = m;
 		
 		int bas = 0;
-			while (bas < largeur)
+		while (bas < largeur)
+		{
+			int droite =0;
+			while (droite < hauteur)
 			{
-				int droite =0;
-				while (droite < hauteur)
-				{
-					grille[bas][droite] = new Cellule();
-					droite++;
-				}
-				bas++;
-			}	
-			/**
-			 * random va nous servir a générer aléatoirement nos mines dans la grille
-			 */
-			Random random = new Random();
-			int mineGenerer =0;
-			
-			while (mineGenerer < nbMines+1)
-			{
-				this.grille[random.nextInt(largeur)][random.nextInt(hauteur)] = 
-						new Cellule(true,0,true);
-				mineGenerer++;
+				grille[bas][droite] = new Cellule();
+				droite++;
 			}
+			bas++;
+		}	
+
+		//--------------------------------------
+		//--- Géneration aléatoire des mines ---
+		//-------------------------------------
+		Random mineAleatoire = new Random();
+		int mineGenerer =0;
+		
+		while (mineGenerer < nbMines + 1)
+		{			
+			this.grille[mineAleatoire.nextInt(largeur)][mineAleatoire.nextInt(hauteur)] =
+				new Cellule(true,0,true);
+				mineGenerer++;
+		}		
 	}
 
-
-
-	// 	FIXME corriger le commentaire  (à discuter)   FIXED
+	//-----------------------------------------------------------------------
+	// <---- Méthodes ---->
+	//-----------------------------------------------------------------------
 	
+	// 	FIXME corriger le commentaire  (à discuter)   FIXED
 	/**
-	 * Parcours de notre grille pour créer toute nos cellules
-	 * On retourne une chaine de caractère représentant notre objet
-	 */
+	* On retourne une chaine de caractère représentant notre objet, ici, une grille
+	* @return result - Chaîne de caractère représentant la grille en chaîne ASCII 
+	*/
 	public String toString()
 	{
 		String result ="";
 		
 		int bas =0;
-		while (bas < this.LARGEUR_DEFAUT)
+		while (bas < this.largeur)
 		{
 			int droite =0;
-			while (droite < this.HAUTEUR_DEFAUT)
+			while (droite < this.hauteur)
 			{
 				result = result + "|" + grille[bas][droite].toString() +"|";
 				
@@ -202,5 +195,40 @@ public class Grille
 		return result;
 	}	
 
+	//-----------------------------------------------------------------------
+	// <---- Accesseurs ---->
+	//-----------------------------------------------------------------------
 	
+	/**
+	 * Accesseur renvoyant la largeur de la grille
+	 * @return largeur 
+	 */
+	public int getLargeur()
+	{
+		return this.largeur;
+	}
+	
+	/**
+	 * Accesseur renvoyant la hauteur de la grille
+	 * @return hauteur 
+	 */
+	public int getHauteur()
+	{
+		return this.hauteur;
+	}
+	
+	/**
+	 * Accesseur renvoyant le nombres de mines de la grille
+	 * @return nbMines
+	 */
+	public int getNbMines()
+	{
+		return this.nbMines;
+	}
+		
+	//-----------------------------------------------------------------------
+	// <---- Mutateurs ---->
+	//-----------------------------------------------------------------------
+		
+	// Eventuellement
 }

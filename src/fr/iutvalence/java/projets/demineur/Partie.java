@@ -1,12 +1,12 @@
 // FIXME déplacer dans un autre paquetage que les classes du jeu
 package fr.iutvalence.java.projets.demineur;
 
-// FIXME corriger le commentaire (ce n'est pas un constructeur)
+// FIXME corriger le commentaire (ce n'est pas un constructeur) FIXED
 /**
- * Constructeur du jeu Demineur
+ * Classe partie
  */
-// FIXME renommer la classe
-/*public class Main
+// FIXME renommer la classe   FIXED
+public class Partie
 {
 	
 	/**
@@ -16,5 +16,5 @@ package fr.iutvalence.java.projets.demineur;
 	/*public static void main(String[] args)
 	{ 
 	    return null;
-	}
+	}*/
 }
