@@ -100,27 +100,6 @@ public class Grille
 					new Cellule(true,0,true);
 			mineGenerer++;
 		}
-		
-		//---------------------------------------
-		//--- Algorithme de recherche de mine ---
-		//---------------------------------------
-		/*
-		int nbMinesVoisines = 0;
-		int j = -1;
-		while (j < 2)
-		{
-			int i = -1;
-			while (i < 2)
-			{
-				if (grille[largeur+i][hauteur+j].ouiMine())
-				{
-					nbMinesVoisines = nbMinesVoisines+1;
-				}			
-			i = i+1;
-			}
-		j = j+1;
-		}
-		 */	
 	}
 	
 	// FIXME corriger et compléter le commentaire    FIXED
