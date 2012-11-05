@@ -1,5 +1,5 @@
-// FIXME déplacer dans un autre paquetage que les classes du jeu
-package fr.iutvalence.java.projets.demineur;
+// FIXME déplacer dans un autre paquetage que les classes du jeu  FIXED
+package fr.iutvalence.java.projets.demineur.jeu;
 
 // FIXME corriger le commentaire (ce n'est pas un constructeur) FIXED
 /**
