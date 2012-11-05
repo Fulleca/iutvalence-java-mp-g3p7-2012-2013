@@ -97,9 +97,54 @@ public class Grille
 		while (mineGenerer < nbMines + 1)
 		{
 			this.grille[mineAleatoire.nextInt(largeur)][mineAleatoire.nextInt(hauteur)] = 
-					new Cellule(true,0,true);
+					new Cellule(false,0,true);
 			mineGenerer++;
 		}
+		
+		// FIXME compléter le commentaire   FIXED
+		/**
+		 * algo de recherche pour une cellule choisie, du nombre de mine autour de celle ci
+		 * @return nbmines
+		 */
+		
+
+		for (int i = 0; i < this.hauteur; i++)
+			for (int j = 0; j < this.largeur; j++)
+			{
+				int nbMines = 0;
+				if (j-1 >= 0)
+				{
+					if (this.grille[i][j-1].getPresenceMine()) 
+						nbMines++;
+				}
+				if (i-1 >=0)
+				{
+					if (this.grille[i-1][j].getPresenceMine()) 
+						nbMines++;
+				}
+				if (j+1 < 10)
+				{
+					if (this.grille[i][j+1].getPresenceMine()) 
+						nbMines++;
+				}
+				if (i+1 < 10)
+				{
+					if (this.grille[i+1][j].getPresenceMine()) 
+						nbMines++;
+				}
+				if ((i-1 >= 0)&&(j-1 >= 0))
+				{
+					if (this.grille[i-1][j-1].getPresenceMine()) 
+						nbMines++;
+				}
+				if ((i+1 < 10)&&(j+1 < 10))
+				{
+					if (this.grille[i+1][j+1].getPresenceMine()) 
+						nbMines++;
+				}
+					
+				this.grille[i][j].setNbMinesVoisines(nbMines);
+			}
 	}
 	
 	// FIXME corriger et compléter le commentaire    FIXED
@@ -119,12 +164,12 @@ public class Grille
 		this.nbMines = m;
 		
 		int bas = 0;
-		while (bas < largeur)
+		while (bas < this.largeur)
 		{
 			int droite =0;
-			while (droite < hauteur)
+			while (droite < this.hauteur)
 			{
-				grille[bas][droite] = new Cellule();
+				this.grille[bas][droite] = new Cellule();
 				droite++;
 			}
 			bas++;
@@ -136,12 +181,15 @@ public class Grille
 		Random mineAleatoire = new Random();
 		int mineGenerer =0;
 		
-		while (mineGenerer < nbMines + 1)
+		while (mineGenerer < this.nbMines + 1)
 		{			
-			this.grille[mineAleatoire.nextInt(largeur)][mineAleatoire.nextInt(hauteur)] =
+			this.grille[mineAleatoire.nextInt(this.largeur)][mineAleatoire.nextInt(this.hauteur)] =
 				new Cellule(true,0,true);
 				mineGenerer++;
-		}		
+		}
+		
+		
+		
 	}
 
 	//-----------------------------------------------------------------------
@@ -163,7 +211,7 @@ public class Grille
 			int droite =0;
 			while (droite < this.hauteur)
 			{
-				result = result + "|" + grille[bas][droite].toString() +"|";
+				result = result + "|" + this.grille[bas][droite].toString() +"|";
 				
 				droite++;
 			}
@@ -174,6 +222,8 @@ public class Grille
 		return result;
 	}	
 
+
+	
 	//-----------------------------------------------------------------------
 	// <---- Accesseurs ---->
 	//-----------------------------------------------------------------------

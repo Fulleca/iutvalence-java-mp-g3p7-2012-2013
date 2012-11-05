@@ -31,30 +31,7 @@ public class Demineur
 	
 	// FIXME attributs, constructeurs ?   FIXED
 	
-	// FIXME compléter le commentaire   FIXED
-	/**
-	 * algo de recherche pour une cellule choisie, du nombre de mine autour de celle ci
-	 * @return nbmines
-	 */
-/*	public int nbMinesVoisines()
-	{
-		int nbmines = 0;
-		int j = -1;
-		while (j < 2)
-		{
-			int i = -1;
-			while (i < 2)
-			{
-				if (grille[grille.getLargeur+i][hauteur+j] == 1)
-				{
-					nbmines = nbmines+1;
-				}			
-			i = i+1;
-			}
-		j = j+1;
-		}
-		return nbmines;
-	}*/
+
 	
 	
 

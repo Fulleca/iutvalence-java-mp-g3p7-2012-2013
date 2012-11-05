@@ -120,7 +120,7 @@ public class Cellule
 		{	
 			if (this.presenceMine)
 			{	
-				result = result + ("+" + "¤");
+				result = result + ("+" + nbMinesVoisines + "¤");
 			}	
 			else
 			{	
@@ -129,7 +129,14 @@ public class Cellule
 		}	
 		else
 		{	
-			result = result + ("-" + nbMinesVoisines);
+			if (this.presenceMine)
+			{	
+				result = result + ("-" + nbMinesVoisines + "¤");
+			}	
+			else
+			{	
+				result = result + ("-" + nbMinesVoisines + " ");
+			}
 		}	
 		
 		return result;
