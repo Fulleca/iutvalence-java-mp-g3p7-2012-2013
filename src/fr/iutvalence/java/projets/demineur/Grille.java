@@ -103,7 +103,7 @@ public class Grille
 		
 		// FIXME compléter le commentaire   FIXED
 		/**
-		 * algorithme de recherche pour une cellule choisie, du nombre de mine autour de celle ci
+		 * algo de recherche pour une cellule choisie, du nombre de mine autour de celle ci
 		 * @return nbmines
 		 */
 		
