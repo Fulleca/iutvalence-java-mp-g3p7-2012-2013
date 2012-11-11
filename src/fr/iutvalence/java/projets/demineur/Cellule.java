@@ -1,10 +1,9 @@
-// FIXME donner au paquetage un nom plus évocateur (fr.iutvalence.java.projets.demineur) FIXED
 
 package fr.iutvalence.java.projets.demineur;
 
 
 /**
- * Classe cellule qui gère l'état d'une cellule, c'est-à-dire si une cellule est cacher, visible et 
+ * Classe cellule qui gère l'état d'une cellule, c'est-à-dire si une cellule est cachée, visible et 
  * si celle-ci contient ou non une mine.
  * ATTRIBUTS : visible, presenceMine, nbMinesVoisines
  * CONSTRUCTEURS : Cellule(), Cellule(boolean d, int nb, boolean p)
@@ -24,7 +23,6 @@ public class Cellule
 	/**
 	 * Booléen spécifiant la visibilité d'une cellule.  
 	 */
-	// FIXME la ligne au dessus est inutile FIXED
 	private boolean visible;	
 	
 	/**
@@ -53,7 +51,6 @@ public class Cellule
 		this.visible = false;
 		this.nbMinesVoisines = 0;
 		this.presenceMine = false;
-		// FIXME tous les attributs doivent être initialisé   FIXED
 	}
 	
 	/**
@@ -105,7 +102,6 @@ public class Cellule
 		this.presenceMine = false;
 	}
 
-	// FIXME compléter le commentaire    FIXED
 	/**
 	* On retourne une chaine de caractère représentant notre objet, ici nos cellules
 	* Si la cellule est visible, nous l'afficherons par le signe "+", sinon, c'est que la cellule est caché (représenté par "-") 

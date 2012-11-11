@@ -3,18 +3,13 @@ package fr.iutvalence.java.projets.demineur;
 import java.util.Random;
 
 /**
- * Classe Grille permettant la gestion d'une grille défini par une largeur, une hauter et un nombre de mines
- * Une grille peut être personnalisée
- * CONSTANTES : LARGEUR_DEFAUT, HAUTEUR_DEFAUT, NB_MINES_DEFAUT
- * ATTRIBUTS : largeur, hauteur, nbMines, grille
- * CONSTRUCTEURS : Grille(), Grille(int l, int h, int m)
- * METHODES : toString()
- * ACCESSEURS : getLargeur(), getHauteur(), getNbMines
+ * Classe Grille permettant la gestion d'une grille définie par une largeur, une hauteur et un nombre de mines
+ *
  * @author chaufoul
  */
 public class Grille 
 {
-	
+	// FIXME il faut ajouter des méthodes permettant de manipuler en lecture et écriture les cellules de la grille (à discuter)
 	//-----------------------------------------------------------------------
 	// <---- Constantes ---->
 	//-----------------------------------------------------------------------
@@ -102,7 +97,6 @@ public class Grille
 		}
 	}
 	
-	// FIXME corriger et compléter le commentaire    FIXED
 	/**
 	 * Constructeur de la grille de jeu personnalisée
 	 * Le joueur choisi la largeur "l", la hauteur "h", et le nombre de mines de la grille "m"
@@ -148,7 +142,6 @@ public class Grille
 	// <---- Méthodes ---->
 	//-----------------------------------------------------------------------
 	
-	// 	FIXME corriger le commentaire  (à discuter)   FIXED
 	/**
 	* On retourne une chaine de caractère représentant notre objet, ici, une grille
 	* @return result - Chaîne de caractère représentant la grille en chaîne ASCII 
