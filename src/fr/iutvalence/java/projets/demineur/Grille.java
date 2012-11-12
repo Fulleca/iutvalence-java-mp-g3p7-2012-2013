@@ -83,63 +83,7 @@ public class Grille
 			bas++;
 		}
 		
-		//--------------------------------------
-		//--- Géneration aléatoire des mines ---
-		//--------------------------------------
-		Random mineAleatoire = new Random();
-		int mineGenerer = 0;
-		
-		while (mineGenerer < nbMines + 1)
-		{
-			this.grille[mineAleatoire.nextInt(largeur)][mineAleatoire.nextInt(hauteur)] = 
-					new Cellule(false,0,true);
-			mineGenerer++;
-		}
-		
-		// FIXME compléter le commentaire   FIXED
-		/**
-		 * algo de recherche pour une cellule choisie, du nombre de mine autour de celle ci
-		 * @return nbmines
-		 */
-		
-
-		for (int i = 0; i < this.hauteur; i++)
-			for (int j = 0; j < this.largeur; j++)
-			{
-				int nbMines = 0;
-				if (j-1 >= 0)
-				{
-					if (this.grille[i][j-1].getPresenceMine()) 
-						nbMines++;
-				}
-				if (i-1 >=0)
-				{
-					if (this.grille[i-1][j].getPresenceMine()) 
-						nbMines++;
-				}
-				if (j+1 < 10)
-				{
-					if (this.grille[i][j+1].getPresenceMine()) 
-						nbMines++;
-				}
-				if (i+1 < 10)
-				{
-					if (this.grille[i+1][j].getPresenceMine()) 
-						nbMines++;
-				}
-				if ((i-1 >= 0)&&(j-1 >= 0))
-				{
-					if (this.grille[i-1][j-1].getPresenceMine()) 
-						nbMines++;
-				}
-				if ((i+1 < 10)&&(j+1 < 10))
-				{
-					if (this.grille[i+1][j+1].getPresenceMine()) 
-						nbMines++;
-				}
-					
-				this.grille[i][j].setNbMinesVoisines(nbMines);
-			}
+	
 	}
 	
 	/**
@@ -183,6 +127,53 @@ public class Grille
 		}
 		
 		
+		for (int j = 0; j < h; j++)
+			for (int i = 0; i < l; i++)
+			{
+				int nbMines = 0;
+				if (j-1 >= 0)
+				{
+					if (this.grille[i][j-1].getPresenceMine()) 
+						nbMines++;
+				}
+				if (i-1 >=0)
+				{
+					if (this.grille[i-1][j].getPresenceMine()) 
+						nbMines++;
+				}
+				if (j+1 < h)
+				{
+					if (this.grille[i][j+1].getPresenceMine()) 
+						nbMines++;
+				}
+				if (i+1 < l)
+				{
+					if (this.grille[i+1][j].getPresenceMine()) 
+						nbMines++;
+				}
+				if ((i-1 >= 0)&&(j-1 >= 0))
+				{
+					if (this.grille[i-1][j-1].getPresenceMine()) 
+						nbMines++;
+				}
+				if ((i+1 < l)&&(j+1 < h))
+				{
+					if (this.grille[i+1][j+1].getPresenceMine()) 
+						nbMines++;
+				}
+				if ((i+1 < l)&&(j-1 >=0))
+				{
+					if (this.grille[i+1][j-1].getPresenceMine()) 
+						nbMines++;
+				}
+				if ((i-1 >=0)&&(j+1 < h))
+				{
+					if (this.grille[i-1][j+1].getPresenceMine()) 
+						nbMines++;
+				}
+					
+				this.grille[i][j].setNbMinesVoisines(nbMines);
+			}
 		
 	}
 
@@ -247,6 +238,8 @@ public class Grille
 	{
 		return this.nbMines;
 	}
+	
+	
 		
 	//-----------------------------------------------------------------------
 	// <---- Mutateurs ---->
