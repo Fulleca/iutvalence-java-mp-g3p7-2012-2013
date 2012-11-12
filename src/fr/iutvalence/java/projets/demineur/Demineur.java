@@ -10,7 +10,7 @@ import java.util.Random;
  * @Author Lambert & Chaufournais
  */
 
-
+//FIXME compléter pour que cela ressemble à une partie de démineur (gestion aléatoire des choix pour le moment)
 public class Demineur
 {
 	//-----------------------------------------------------------------------
@@ -22,15 +22,26 @@ public class Demineur
 	 */
 	public boolean aPerdu;
 	
+	/**
+	 * Définition d'une grille g
+	 */
 	private Grille g;
 	
+	//-----------------------------------------------------------------------
+	// <---- Constructeurs ---->
+	//-----------------------------------------------------------------------
 	
-	
-	
+	/**
+	 * Constructeur par défaut d'un démineur
+	 */
 	public Demineur()
 	{
-		System.out.print("Bienvenue sur le démineur");
-		g = new Grille();	
+		this.aPerdu = false;
+		this.g = new Grille();
+		
+		
+		System.out.println("Bienvenue sur le démineur !!!");
+		System.out.println(this.g.toString());
 		
 		//--------------------------------------
 		//--- Géneration aléatoire des mines ---
@@ -39,9 +50,9 @@ public class Demineur
 		Random mineAleatoire = new Random();
 		int mineGenerer = 0;
 		
-		while (mineGenerer < g.getNbMines() + 1)
+		while (mineGenerer < this.g.getNbMines() + 1)
 		{
-			g.[mineAleatoire.nextInt(g.getLargeur())][mineAleatoire.nextInt(g.getHauteur())] = 
+			grille[mineAleatoire.nextInt(this.g.getLargeur())][mineAleatoire.nextInt(this.g.getHauteur())] = 
 					new Cellule(false,0,true);
 			mineGenerer++;
 		}
@@ -53,7 +64,7 @@ public class Demineur
 		 */
 		
 
-		for (int i = 0; i < this.g.getLargeur(); i++)
+	/*	for (int i = 0; i < this.g.getLargeur(); i++)
 			for (int j = 0; j < g.getHauteur(); j++)
 			{
 				int nbMines = 0;
@@ -99,17 +110,13 @@ public class Demineur
 				}
 					
 				this.grille[i][j].setNbMinesVoisines(nbMines);
-			}
+			}*/
 	}
 	
 	
-	
-	
-	
-
+/*
 public void jouer()
 {
-
 	Random mineAleatoire = new Random();
 	while (pasPerdu())
 	{
@@ -123,24 +130,15 @@ public void jouer()
 		}
 		Thread.sleep(3000);		
 	}
-	
-	
-	
-}	
-	
-	
-	
-	// FIXME compléter pour que cela ressemble à une partie de démineur (gestion aléatoire des choix pour le moment)
-	
-
+}	*/
 	
 	//-----------------------------------------------------------------------
 	// Methodes
 	//-----------------------------------------------------------------------
 	
-	
 	/**
 	 * Défini la partie comme étant perdue
+	 * @return false
 	 */
 	public boolean perdu()
 	{
@@ -149,11 +147,17 @@ public void jouer()
 		
 	/**
 	 * Défini la partie comme n'étant pas perdu
+	 * @return true
 	 */
 	public boolean pasPerdu()
 	{
 		return this.aPerdu = true;
 	}
 
+	
+	//-----------------------------------------------------------------------
+	// <---- Accesseurs ---->
+	//-----------------------------------------------------------------------
+	
  }
 	

@@ -116,22 +116,22 @@ public class Cellule
 		{	
 			if (this.presenceMine)
 			{	
-				result = result + ("+" + nbMinesVoisines + "¤");
+				result = result + ("+" + this.nbMinesVoisines + "¤");
 			}	
 			else
 			{	
-				result = result + ("+" + nbMinesVoisines + " ");
+				result = result + ("+" + this.nbMinesVoisines + " ");
 			}
 		}	
 		else
 		{	
 			if (this.presenceMine)
 			{	
-				result = result + ("-" + nbMinesVoisines + "¤");
+				result = result + ("-" + this.nbMinesVoisines + "¤");
 			}	
 			else
 			{	
-				result = result + ("-" + nbMinesVoisines + " ");
+				result = result + ("-" + this.nbMinesVoisines + " ");
 			}
 		}	
 		
@@ -177,6 +177,7 @@ public class Cellule
 	
 	/**
 	 * Mutateur permettant de modifier l'attribut visible
+	 * @param visible 
 	 */
 	public void setVisibilite(boolean visible)
 	{
@@ -194,7 +195,7 @@ public class Cellule
 	
 	/**
 	 * Mutateur permettant de modifier l'attribut NbMinesVoisines
-	 * @param nbMinesVoisines
+	 * @param nbMinesVoisines 
 	 */
 	public void setNbMinesVoisines(int nbMinesVoisines)
 	{

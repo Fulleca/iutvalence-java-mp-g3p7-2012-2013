@@ -72,18 +72,16 @@ public class Grille
 		this.grille = new Cellule[LARGEUR_DEFAUT][HAUTEUR_DEFAUT];
 		
 		int bas = 0;
-		while (bas < largeur)
+		while (bas < this.largeur)
 		{
 			int droite =0;
-			while (droite < hauteur)
+			while (droite < this.hauteur)
 			{
-				grille[bas][droite] = new Cellule();
+				this.grille[bas][droite] = new Cellule();
 				droite++;
 			}
 			bas++;
 		}
-		
-	
 	}
 	
 	/**
@@ -239,11 +237,4 @@ public class Grille
 		return this.nbMines;
 	}
 	
-	
-		
-	//-----------------------------------------------------------------------
-	// <---- Mutateurs ---->
-	//-----------------------------------------------------------------------
-		
-	// Eventuellement
 }
