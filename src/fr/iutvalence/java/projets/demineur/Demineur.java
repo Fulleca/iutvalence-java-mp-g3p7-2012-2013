@@ -209,18 +209,17 @@ public class Demineur
 			Random mineAleatoire = new Random();
 			int x = mineAleatoire.nextInt(this.g.getLargeur());
 			int y = mineAleatoire.nextInt(this.g.getHauteur());
-			Cellule c = this.g.getCellule(x,y);
-			c.setVisibilite(true);
-				
+			Cellule c = this.g.getCellule(x,y);		
 			System.out.println((x + 1) + " ; " + (y + 1) + " // "); // Pour afficher les coordonnée choisies (généré aléatoirement)
-			System.out.println(this.g.toString());
+			c.setVisibilite(true);
+			
 			if (c.getPresenceMine())
 			{
 				jouer = 0;
-				System.out.print("PERDU");
+				System.out.println("PERDU");
 			}
-			c.setVisibilite(true);
-		
+			System.out.println(this.g.toString());
+
 			try
 			{
 				Thread.sleep(3000);
