@@ -1,7 +1,5 @@
 package fr.iutvalence.java.projets.demineur;
 
-import java.util.Random;
-
 /**
  * Classe Grille permettant la gestion d'une grille définie par une largeur, une hauteur et un nombre de mines
  *
@@ -9,7 +7,7 @@ import java.util.Random;
  */
 public class Grille 
 {
-	// FIXME il faut ajouter des méthodes permettant de manipuler en lecture et écriture les cellules de la grille (à discuter)
+	// FIXME il faut ajouter des méthodes permettant de manipuler en lecture et écriture les cellules de la grille (à discuter) FIXED
 	//-----------------------------------------------------------------------
 	// <---- Constantes ---->
 	//-----------------------------------------------------------------------
@@ -71,16 +69,16 @@ public class Grille
 		/* Instanciation d'une objet cellule */
 		this.grille = new Cellule[LARGEUR_DEFAUT][HAUTEUR_DEFAUT];
 		
-		int bas = 0;
-		while (bas < largeur)
+		int x = 0;
+		while (x < this.largeur)
 		{
-			int droite =0;
-			while (droite < hauteur)
+			int y = 0;
+			while (y < this.hauteur)
 			{
-				grille[bas][droite] = new Cellule();
-				droite++;
+				this.grille[x][y] = new Cellule();
+				y++;
 			}
-			bas++;
+			x++;
 		}
 	}
 	
@@ -99,16 +97,16 @@ public class Grille
 		this.grille = new Cellule[l][h];
 		this.nbMines = m;
 		
-		int bas = 0;
-		while (bas < this.largeur)
+		int x = 0;
+		while (x < this.largeur)
 		{
-			int droite =0;
-			while (droite < this.hauteur)
+			int y = 0;
+			while (y < this.hauteur)
 			{
-				this.grille[bas][droite] = new Cellule();
-				droite++;
+				this.grille[x][y] = new Cellule();
+				y++;
 			}
-			bas++;
+			x++;
 		}	
 	}
 
@@ -124,20 +122,18 @@ public class Grille
 	{
 		String result ="";
 		
-		int bas =0;
-		while (bas < this.largeur)
+		int x =0;
+		while (x < this.largeur)
 		{
-			int droite =0;
-			while (droite < this.hauteur)
+			int y =0;
+			while (y < this.hauteur)
 			{
-				result = result + "|" + this.grille[bas][droite].toString() +"|";
-				
-				droite++;
+				result = result + "|" + this.grille[x][y].toString() +"|";
+				y++;
 			}
-			result=result+"\n";
-			bas++;
+			result = result + "\n";
+			x++;
 		}
-		
 		return result;
 	}	
 

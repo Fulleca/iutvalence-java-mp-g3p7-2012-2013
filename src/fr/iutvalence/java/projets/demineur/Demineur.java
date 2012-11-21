@@ -14,8 +14,7 @@ public class Demineur
 {
 	//-----------------------------------------------------------------------
 	// Attributs
-	//-----------------------------------------------------------------------
-			
+	//-----------------------------------------------------------------------		
 	/**
 	 * Booléen spécifiant si le joueur a perdu
 	 */
@@ -38,6 +37,7 @@ public class Demineur
 	public Demineur()
 	{
 		this.g = new Grille();
+		this.aPerdu = false;
 
 		//--------------------------------------
 		//--- Géneration aléatoire des mines ---
@@ -109,6 +109,89 @@ public class Demineur
 	
 	
 	
+
+	/**
+	 * Constructeur personnalisé d'un démineur
+	 * Un démineur est une nouvelle zone de jeu
+	 * Le constructeur génère aléatoirement un nombre nombresMines
+	 * de mines dans la grille x par y
+	 * @param x
+	 * @param y
+	 * @param nombresMines
+	 */
+	public Demineur(int x, int y, int nombresMines)
+	{
+		this.g = new Grille(x,y,nombresMines);
+		this.aPerdu = false;
+
+		//--------------------------------------
+		//--- Géneration aléatoire des mines ---
+		//--------------------------------------
+		
+		Random mineAleatoire = new Random();
+		int mineGenerer = 0;
+		
+		while (mineGenerer < this.g.getNbMines() + 1)
+		{
+			Cellule c = this.g.getCellule(mineAleatoire.nextInt(this.g.getLargeur()), mineAleatoire.nextInt(this.g.getHauteur())); 
+			c.setPresenceMine(true);
+			mineGenerer++;
+		}
+		//-----------------------------------------
+		//--- Algorithme de recherche des mines ---
+		//-----------------------------------------
+		for (int i = 0; i < this.g.getLargeur(); i++)
+		{	
+			for (int j = 0; j < this.g.getHauteur(); j++)
+			{
+				int nbMines = 0;
+				if (j-1 >= 0)
+				{
+					if (this.g.getCellule(i, j-1).getPresenceMine()) 
+						nbMines++;
+				}
+				if (i-1 >=0)
+				{
+					if (this.g.getCellule(i-1, j).getPresenceMine()) 
+						nbMines++;
+				}
+				if (j+1 < 10)
+				{
+					if (this.g.getCellule(i, j+1).getPresenceMine()) 
+						nbMines++;
+				}
+				if (i+1 < 10)
+				{
+					if (this.g.getCellule(i+1, j).getPresenceMine()) 
+						nbMines++;
+				}
+				if ((i-1 >= 0)&&(j-1 >= 0))
+				{
+					if (this.g.getCellule(i-1, j-1).getPresenceMine()) 
+						nbMines++;
+				}
+				if ((i+1 < 10)&&(j+1 < 10))
+				{
+					if (this.g.getCellule(i+1, j+1).getPresenceMine()) 
+						nbMines++;
+				}
+				if ((i+1 < 10)&&(j-1 >=0))
+				{
+					if (this.g.getCellule(i+1, j-1).getPresenceMine()) 
+						nbMines++;
+				}
+				if ((i-1 >=0)&&(j+1 < 10))
+				{
+					if (this.g.getCellule(i-1, j+1).getPresenceMine()) 
+						nbMines++;
+				}
+				this.g.getCellule(i, j).setNbMinesVoisines(nbMines);
+			}
+		}
+		System.out.println("Bienvenue sur le démineur");
+		System.out.println(this.g.toString());
+	}	
+	
 	
 	//-----------------------------------------------------------------------
 	// Méthodes
@@ -120,26 +203,23 @@ public class Demineur
 	// FIXME compléter pour que cela ressemble à une partie de démineur (gestion aléatoire des choix pour le moment) FIXED
 	public void jouer()
 	{
-		int jeu =1;
-		while (jeu != 0)
+		int jouer = 1;
+		while (jouer != 0)
 		{
 			Random mineAleatoire = new Random();
-			int x =mineAleatoire.nextInt(this.g.getLargeur());
-			int y =mineAleatoire.nextInt(this.g.getHauteur());
+			int x = mineAleatoire.nextInt(this.g.getLargeur());
+			int y = mineAleatoire.nextInt(this.g.getHauteur());
 			Cellule c = this.g.getCellule(x,y);
 			c.setVisibilite(true);
 				
-			System.out.print(x);
-			System.out.print(" ; ");
-			System.out.print(y);
-			System.out.print("  //  ");
-			// Pour afficher coordonnées aléatoire
-		
+			System.out.println((x + 1) + " ; " + (y + 1) + " // "); // Pour afficher les coordonnée choisies (généré aléatoirement)
+			System.out.println(this.g.toString());
 			if (c.getPresenceMine())
 			{
-				jeu = 0;
+				jouer = 0;
 				System.out.print("PERDU");
 			}
+			c.setVisibilite(true);
 		
 			try
 			{
@@ -158,7 +238,7 @@ public class Demineur
 	 */
 	public boolean perdu()
 	{
-		return this.aPerdu = false;
+		return this.aPerdu = true;
 	}
 		
 	/**
@@ -167,12 +247,7 @@ public class Demineur
 	 */
 	public boolean pasPerdu()
 	{
-		return this.aPerdu = true;
-	}
-	
-	public void setPerdu(boolean aPerdu)
-	{
-		this.aPerdu = aPerdu;
+		return this.aPerdu = false;
 	}
 
  }
