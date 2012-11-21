@@ -171,6 +171,7 @@ public class Cellule
 		return this.nbMinesVoisines;
 	}
 	
+
 	//-----------------------------------------------------------------------
 	// <---- Mutateurs ---->
 	//-----------------------------------------------------------------------
@@ -195,12 +196,11 @@ public class Cellule
 	
 	/**
 	 * Mutateur permettant de modifier l'attribut NbMinesVoisines
-	 * @param nbMinesVoisines 
+	 * @param nbMinesVoisines
 	 */
 	public void setNbMinesVoisines(int nbMinesVoisines)
 	{
 		this.nbMinesVoisines = nbMinesVoisines;
 	}
-	
 }
 	

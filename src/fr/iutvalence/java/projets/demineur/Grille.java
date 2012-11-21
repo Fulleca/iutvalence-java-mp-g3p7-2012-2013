@@ -72,12 +72,12 @@ public class Grille
 		this.grille = new Cellule[LARGEUR_DEFAUT][HAUTEUR_DEFAUT];
 		
 		int bas = 0;
-		while (bas < this.largeur)
+		while (bas < largeur)
 		{
 			int droite =0;
-			while (droite < this.hauteur)
+			while (droite < hauteur)
 			{
-				this.grille[bas][droite] = new Cellule();
+				grille[bas][droite] = new Cellule();
 				droite++;
 			}
 			bas++;
@@ -110,69 +110,6 @@ public class Grille
 			}
 			bas++;
 		}	
-
-		//--------------------------------------
-		//--- Géneration aléatoire des mines ---
-		//-------------------------------------
-		Random mineAleatoire = new Random();
-		int mineGenerer =0;
-		
-		while (mineGenerer < this.nbMines + 1)
-		{			
-			this.grille[mineAleatoire.nextInt(this.largeur)][mineAleatoire.nextInt(this.hauteur)] =
-				new Cellule(true,0,true);
-				mineGenerer++;
-		}
-		
-		
-		for (int j = 0; j < h; j++)
-			for (int i = 0; i < l; i++)
-			{
-				int nbMines = 0;
-				if (j-1 >= 0)
-				{
-					if (this.grille[i][j-1].getPresenceMine()) 
-						nbMines++;
-				}
-				if (i-1 >=0)
-				{
-					if (this.grille[i-1][j].getPresenceMine()) 
-						nbMines++;
-				}
-				if (j+1 < h)
-				{
-					if (this.grille[i][j+1].getPresenceMine()) 
-						nbMines++;
-				}
-				if (i+1 < l)
-				{
-					if (this.grille[i+1][j].getPresenceMine()) 
-						nbMines++;
-				}
-				if ((i-1 >= 0)&&(j-1 >= 0))
-				{
-					if (this.grille[i-1][j-1].getPresenceMine()) 
-						nbMines++;
-				}
-				if ((i+1 < l)&&(j+1 < h))
-				{
-					if (this.grille[i+1][j+1].getPresenceMine()) 
-						nbMines++;
-				}
-				if ((i+1 < l)&&(j-1 >=0))
-				{
-					if (this.grille[i+1][j-1].getPresenceMine()) 
-						nbMines++;
-				}
-				if ((i-1 >=0)&&(j+1 < h))
-				{
-					if (this.grille[i-1][j+1].getPresenceMine()) 
-						nbMines++;
-				}
-					
-				this.grille[i][j].setNbMinesVoisines(nbMines);
-			}
-		
 	}
 
 	//-----------------------------------------------------------------------
@@ -204,8 +141,6 @@ public class Grille
 		return result;
 	}	
 
-
-	
 	//-----------------------------------------------------------------------
 	// <---- Accesseurs ---->
 	//-----------------------------------------------------------------------
@@ -235,6 +170,44 @@ public class Grille
 	public int getNbMines()
 	{
 		return this.nbMines;
+	}
+	
+	/**
+	 * Méthode permettant de retourner une cellule
+	 * @param x
+	 * @param y
+	 * @return grille[x][y]
+	 */
+	public Cellule getCellule(int x,int y)
+	{
+		return this.grille[x][y];
+	}
+	
+	
+	//-----------------------------------------------------------------------
+	// <---- Setteur ---->
+	//-----------------------------------------------------------------------
+	
+	/**
+	 * Setteur permetant de changer la visibilité d'une cellule se trouvant 
+	 * à la position x et y de la grille à true
+	 * @param x 
+	 * @param y 
+	 */
+	public void setCelluleVisible(int x,int y)
+	{	
+		this.grille[x][y].setVisibilite(true);
+	}
+	
+	/**
+	 * Setteur permetant de changer la visibilité d'une cellule se trouvant 
+	 * à la position x et y de la grille à false
+	 * @param x 
+	 * @param y 
+	 */
+	public void setCelluleCacher(int x,int y)
+	{	
+		this.grille[x][y].setVisibilite(false);
 	}
 	
 }
