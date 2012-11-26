@@ -178,7 +178,7 @@ public class Cellule
 	
 	/**
 	 * Mutateur permettant de modifier l'attribut visible
-	 * @param visible 
+	 * @param visible booléen indiquant la visibilité d'une cellule
 	 */
 	public void setVisibilite(boolean visible)
 	{
@@ -187,7 +187,7 @@ public class Cellule
 	
 	/**
 	 * Mutateur permettant de modifier l'attribut presenceMine
-	 * @param presenceMine
+	 * @param presenceMine booléen spécifiant si une mine est présente
 	 */
 	public void setPresenceMine(boolean presenceMine)
 	{
@@ -196,7 +196,7 @@ public class Cellule
 	
 	/**
 	 * Mutateur permettant de modifier l'attribut NbMinesVoisines
-	 * @param nbMinesVoisines
+	 * @param nbMinesVoisines nombres de mines se trouvant autour de la cellule
 	 */
 	public void setNbMinesVoisines(int nbMinesVoisines)
 	{

@@ -12,7 +12,7 @@ public class TestGrille
 
 	/**
 	 * Affichage de notre nouvelle Grille avec la méthode toString
-	 * @param args
+	 * @param args Argument de la fonction main
 	 */
 	public static void main(String[] args)
 	{
