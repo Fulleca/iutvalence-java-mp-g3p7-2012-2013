@@ -131,7 +131,7 @@ public class Demineur
 		Random mineAleatoire = new Random();
 		int mineGenerer = 0;
 		
-		while (mineGenerer < this.g.getNbMines() + 1)
+		while (mineGenerer < this.g.getNbMines())
 		{
 			Cellule c = this.g.getCellule(mineAleatoire.nextInt(this.g.getLargeur()), mineAleatoire.nextInt(this.g.getHauteur())); 
 			c.setPresenceMine(true);
@@ -155,12 +155,12 @@ public class Demineur
 					if (this.g.getCellule(i-1, j).getPresenceMine()) 
 						nbMines++;
 				}
-				if (j+1 < 10)
+				if (j+1 < g.getHauteur())
 				{
 					if (this.g.getCellule(i, j+1).getPresenceMine()) 
 						nbMines++;
 				}
-				if (i+1 < 10)
+				if (i+1 < g.getLargeur())
 				{
 					if (this.g.getCellule(i+1, j).getPresenceMine()) 
 						nbMines++;
@@ -170,17 +170,17 @@ public class Demineur
 					if (this.g.getCellule(i-1, j-1).getPresenceMine()) 
 						nbMines++;
 				}
-				if ((i+1 < 10)&&(j+1 < 10))
+				if ((i+1 < g.getLargeur())&&(j+1 < g.getHauteur()))
 				{
 					if (this.g.getCellule(i+1, j+1).getPresenceMine()) 
 						nbMines++;
 				}
-				if ((i+1 < 10)&&(j-1 >=0))
+				if ((i+1 < g.getLargeur())&&(j-1 >=0))
 				{
 					if (this.g.getCellule(i+1, j-1).getPresenceMine()) 
 						nbMines++;
 				}
-				if ((i-1 >=0)&&(j+1 < 10))
+				if ((i-1 >=0)&&(j+1 < g.getHauteur()))
 				{
 					if (this.g.getCellule(i-1, j+1).getPresenceMine()) 
 						nbMines++;
@@ -204,31 +204,54 @@ public class Demineur
 	public void jouer()
 	{
 		int jouer = 1;
+		int compteur = ((g.getHauteur()*g.getLargeur())-g.getNbMines());
+		System.out.println("Nombres de cases vides restantes :"+compteur);
+		try
+		{
+			Thread.sleep(3000);
+		}
+		catch (InterruptedException e)
+		{
+			// ici on peut ignorer l exception
+		}		
 		while (jouer != 0)
 		{
 			Random mineAleatoire = new Random();
 			int x = mineAleatoire.nextInt(this.g.getLargeur());
 			int y = mineAleatoire.nextInt(this.g.getHauteur());
-			Cellule c = this.g.getCellule(x,y);		
-			System.out.println((x + 1) + " ; " + (y + 1) + " // "); // Pour afficher les coordonnée choisies (généré aléatoirement)
-			c.setVisibilite(true);
+			Cellule c = this.g.getCellule(x,y);
+			if (!c.getVisibilite())
+			{
+				c.setVisibilite(true);
+				--compteur;
+			}
 			
-			if (c.getPresenceMine())
-			{
-				jouer = 0;
-				System.out.println("PERDU");
-			}
-			System.out.println(this.g.toString());
-
-			try
-			{
-				Thread.sleep(3000);
-			}
-			catch (InterruptedException e)
-			{
-				// ici on peut ignorer l exception
-			}		
+			System.out.println((x + 1) + " ; " + (y + 1) + " // Nombres de cases vides restantes: " + compteur); // Pour afficher les coordonnée choisies (généré aléatoirement)
+				if (c.getPresenceMine())
+				{
+					jouer = 0;
+					System.out.println("PERDU");
+					System.out.println("Dommage, il vous restait "+(compteur+1)+"case(s) non découverte");
+				}
+				System.out.println(this.g.toString());
+			
+				if (compteur == 0)
+				{
+					jouer =0;
+					System.out.println("GAGNER");
+				}
+			
+			
+				try
+				{
+					Thread.sleep(3000);
+				}
+				catch (InterruptedException e)
+				{
+					// ici on peut ignorer l exception
+				}		
 		}
+		System.out.println("Fin du démineur");
 	}
 	
 	/**

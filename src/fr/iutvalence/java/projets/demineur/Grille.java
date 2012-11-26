@@ -123,12 +123,12 @@ public class Grille
 		String result ="";
 		
 		int x =0;
-		while (x < this.largeur)
+		while (x < this.hauteur)
 		{
 			int y =0;
-			while (y < this.hauteur)
+			while (y < this.largeur)
 			{
-				result = result + "|" + this.grille[x][y].toString() +"|";
+				result = result + "|" + this.grille[y][x].toString() +"|";
 				y++;
 			}
 			result = result + "\n";
@@ -137,6 +137,8 @@ public class Grille
 		return result;
 	}	
 
+	
+	
 	//-----------------------------------------------------------------------
 	// <---- Accesseurs ---->
 	//-----------------------------------------------------------------------
@@ -178,7 +180,6 @@ public class Grille
 	{
 		return this.grille[x][y];
 	}
-	
 	
 	//-----------------------------------------------------------------------
 	// <---- Setteur ---->
