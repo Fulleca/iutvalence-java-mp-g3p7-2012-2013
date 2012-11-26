@@ -7,7 +7,6 @@ package fr.iutvalence.java.projets.demineur;
  */
 public class Grille 
 {
-	// FIXME il faut ajouter des méthodes permettant de manipuler en lecture et écriture les cellules de la grille (à discuter) FIXED
 	//-----------------------------------------------------------------------
 	// <---- Constantes ---->
 	//-----------------------------------------------------------------------
@@ -172,8 +171,8 @@ public class Grille
 	
 	/**
 	 * Méthode permettant de retourner une cellule
-	 * @param x
-	 * @param y
+	 * @param x abscisse de la cellule se situant dans la grille
+	 * @param y ordonnée de la cellule se situant dans la grille
 	 * @return grille[x][y]
 	 */
 	public Cellule getCellule(int x,int y)
@@ -188,8 +187,8 @@ public class Grille
 	/**
 	 * Setteur permetant de changer la visibilité d'une cellule se trouvant 
 	 * à la position x et y de la grille à true
-	 * @param x 
-	 * @param y 
+	 * @param x abscisse de la cellule se situant dans la grille
+	 * @param y ordonnée de la cellule se situant dans la grille 
 	 */
 	public void setCelluleVisible(int x,int y)
 	{	
@@ -199,8 +198,8 @@ public class Grille
 	/**
 	 * Setteur permetant de changer la visibilité d'une cellule se trouvant 
 	 * à la position x et y de la grille à false
-	 * @param x 
-	 * @param y 
+	 * @param x abscisse de la cellule se situant dans la grille
+	 * @param y ordonnée de la cellule se situant dans la grille 
 	 */
 	public void setCelluleCacher(int x,int y)
 	{	

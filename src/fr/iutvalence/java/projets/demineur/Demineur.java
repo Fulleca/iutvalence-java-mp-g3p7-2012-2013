@@ -115,8 +115,8 @@ public class Demineur
 	 * Un démineur est une nouvelle zone de jeu
 	 * Le constructeur génère aléatoirement un nombre nombresMines
 	 * de mines dans la grille x par y
-	 * @param x
-	 * @param y
+	 * @param x largeur de la grille
+	 * @param y hauteur de la grille
 	 * @param nombresMines
 	 */
 	public Demineur(int x, int y, int nombresMines)
@@ -198,9 +198,9 @@ public class Demineur
 	//-----------------------------------------------------------------------
 	
 	/**
-	 * 
+	 * Méthode permettant de rendre indépendant le démineur
+	 * Le démineur joue une partie de démineur et peut gagner ou perdre
 	 */
-	// FIXME compléter pour que cela ressemble à une partie de démineur (gestion aléatoire des choix pour le moment) FIXED
 	public void jouer()
 	{
 		int jouer = 1;
@@ -234,14 +234,11 @@ public class Demineur
 					System.out.println("Dommage, il vous restait "+(compteur+1)+"case(s) non découverte");
 				}
 				System.out.println(this.g.toString());
-			
 				if (compteur == 0)
 				{
 					jouer =0;
 					System.out.println("GAGNER");
 				}
-			
-			
 				try
 				{
 					Thread.sleep(3000);

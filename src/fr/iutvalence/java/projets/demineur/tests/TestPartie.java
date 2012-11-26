@@ -15,7 +15,6 @@ public class TestPartie
 	{
 		Demineur d = new Demineur(2,4,0);
 		d.jouer();
-
 	}
 
 }
