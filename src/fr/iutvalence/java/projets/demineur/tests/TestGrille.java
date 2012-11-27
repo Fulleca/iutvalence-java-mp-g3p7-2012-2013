@@ -16,7 +16,7 @@ public class TestGrille
 	 */
 	public static void main(String[] args)
 	{
-		Grille G = new Grille();
+		Grille G = new Grille(20,5,3);
 		
 		System.out.println(G.toString());
 		System.out.print("Hauteur de la grille : ");

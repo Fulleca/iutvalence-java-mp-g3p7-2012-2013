@@ -248,6 +248,7 @@ public class Demineur
 			}
 			else
 			{
+				System.out.println("ATTENTION ! Il y a " + this.g.getCellule(x, y).nbMinesVoisines + " mine(s) autour de la cellule [" + (x+1) + "," + (y+1) + "]");
 				System.out.println("/** Nombre de case(s) restante(s) à dévouvrir : " + compteur + " **/");
 				System.out.println("----------------------------------------------------");
 							
@@ -258,7 +259,7 @@ public class Demineur
 					System.out.println("GAGNER");
 				}
 			}
-			//System.out.println(g.toString());   //Affichage du tableau pour verification
+			//System.out.println(this.g.toString());   //Affichage du tableau pour verification
 			try
 			{
 				Thread.sleep(3000);
@@ -350,6 +351,7 @@ public class Demineur
 			}
 			else
 			{
+				System.out.println("ATTENTION ! Il y a " + this.g.getCellule(choixX, choixY).nbMinesVoisines + " mine(s) autour de la cellule [" + choixX + "," + choixY + "]");
 				System.out.println("/** Nombre de case(s) restante(s) à dévouvrir : " + compteur + " **/");
 				System.out.println("----------------------------------------------------");
 				
