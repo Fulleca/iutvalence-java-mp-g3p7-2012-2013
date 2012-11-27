@@ -243,13 +243,13 @@ public class Demineur
 			{
 				jouer = 0;
 				System.out.println("GAME OVER");
-				System.out.println("Dommage, vous avez perdu alors qu'il vous restait " + (compteur+1) + " case(s) à découvrir");
-				
+				System.out.println("Dommage,il vous restait " + (compteur+1) + " case(s) à découvrir");
+				System.out.println("---------------------------------------------");
 			}
 			else
 			{
-				System.out.println("/** Nombres de cases restantes à dévouvrir : " + compteur + " **/");
-				System.out.println("-------------------------------------------------");
+				System.out.println("/** Nombre de case(s) restante(s) à dévouvrir : " + compteur + " **/");
+				System.out.println("----------------------------------------------------");
 							
 				// On test si on a gagné ou pas
 				if (compteur == 0)
@@ -258,7 +258,7 @@ public class Demineur
 					System.out.println("GAGNER");
 				}
 			}
-			
+			//System.out.println(g.toString());   //Affichage du tableau pour verification
 			try
 			{
 				Thread.sleep(3000);
@@ -311,8 +311,9 @@ public class Demineur
 			int choixX = sc.nextInt();
 			while (choixX > this.g.getLargeur())
 			{
+				System.out.println("----------------------------------------------------------");
 				System.out.println("Valeur non valide - Dépassement de la largeur de la grille");
-				System.out.println("Veuillez saisir l'abscisse de la cellule :");
+				System.out.println("Veuillez re-saisir l'abscisse de la cellule :");
 				choixX = sc.nextInt();
 			}
 			
@@ -321,8 +322,9 @@ public class Demineur
 			int choixY = sc.nextInt();
 			while (choixY > this.g.getHauteur())
 			{
+				System.out.println("----------------------------------------------------------");
 				System.out.println("Valeur non valide - Dépassement de la hauteur de la grille");
-				System.out.println("Veuillez saisir l'ordonnée de la cellule :");
+				System.out.println("Veuillez re-saisir l'ordonnée de la cellule :");
 				choixY = sc.nextInt();
 			}
 			
@@ -343,12 +345,13 @@ public class Demineur
 			{
 				jouer = 0;
 				System.out.println("GAME OVER");
-				System.out.println("Dommage, vous avez perdu alors qu'il vous restait " + (compteur+1) + " case(s) à découvrir");
+				System.out.println("Dommage,il vous restait " + (compteur+1) + " case(s) à découvrir");
+				System.out.println("---------------------------------------------");
 			}
 			else
 			{
-				System.out.println("/** Nombres de cases restantes à dévouvrir : " + compteur + " **/");
-				System.out.println("-------------------------------------------------");	
+				System.out.println("/** Nombre de case(s) restante(s) à dévouvrir : " + compteur + " **/");
+				System.out.println("----------------------------------------------------");
 				
 				// On test si on a gagné ou pas
 				if (compteur == 0)
@@ -357,7 +360,7 @@ public class Demineur
 					System.out.println("GAGNER");
 				}
 			}
-			
+			//System.out.println(g.toString());   //Affichage du tableau pour verification
 			try
 			{
 				Thread.sleep(3000);

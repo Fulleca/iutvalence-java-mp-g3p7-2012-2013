@@ -13,7 +13,7 @@ public class TestPartie
 	 */
 	public static void main(String[] args)
 	{
-		Demineur d = new Demineur(2,4,8);
+		Demineur d = new Demineur(2,4,0);
 		d.jouer();
 	}
 
