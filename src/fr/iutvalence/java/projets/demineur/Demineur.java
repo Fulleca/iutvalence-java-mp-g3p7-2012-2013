@@ -104,8 +104,6 @@ public class Demineur
 				this.g.getCellule(i, j).setNbMinesVoisines(nbMines);
 			}
 		}
-		System.out.println("Bienvenue sur le démineur");
-		System.out.println(this.g.toString());
 	}	
 	
 
@@ -187,8 +185,6 @@ public class Demineur
 				this.g.getCellule(i, j).setNbMinesVoisines(nbMines);
 			}
 		}
-		System.out.println("Bienvenue sur le démineur");
-		System.out.println(this.g.toString());
 	}	
 	
 	
@@ -202,10 +198,18 @@ public class Demineur
 	 */
 	public void jouer()
 	{
+		/////-----------------------------------/////
+		/////--------- Variable locale ---------/////
+		/////-----------------------------------/////
 		int jouer = 1;
 		int compteur = ((this.g.getHauteur()*this.g.getLargeur())-this.g.getNbMines());
-		
-		// On fait une pause
+			
+		/////-----------------------------------/////
+		/////------------ Programme ------------/////
+		/////-----------------------------------/////
+		System.out.println("-------------------------------");
+		System.out.println("-- Bienvenue sur le démineur --");
+		System.out.println("-------------------------------");
 		try
 		{
 			Thread.sleep(3000);
@@ -213,7 +217,7 @@ public class Demineur
 		catch (InterruptedException e)
 		{
 			// ici on peut ignorer l exception
-		}	
+		}		
 		
 		// Tantque jouer est différent de 0, on continue à jouer
 		while (jouer != 0)
@@ -221,7 +225,9 @@ public class Demineur
 			Random mineAleatoire = new Random();
 			int x = mineAleatoire.nextInt(this.g.getLargeur());
 			int y = mineAleatoire.nextInt(this.g.getHauteur());
+			
 			Cellule c = this.g.getCellule(x,y);
+			System.out.println("Cellule choisie : [" + (x+1) + "," + (y+1) + "]");
 			
 			// On test si la cellule n'a pas encore été decouverte
 			// Si elle ne l'a pas été, on décrémente le compteur
@@ -232,28 +238,27 @@ public class Demineur
 				--compteur;
 			}
 			
-			System.out.println("Cellule choisie : " + (x + 1) + " ; " + (y + 1));
-			System.out.println("// Nombres de cases vides restantes: " + compteur + " //");
-			
-			// On vérifie que nous somme pas tombé sur une mine
+			// On test si on est sur une mine
 			if (c.getPresenceMine())
 			{
 				jouer = 0;
-				System.out.println("PERDU");
-				System.out.println("Dommage, il vous restait "+(compteur+1)+"case(s) non découverte");
+				System.out.println("GAME OVER");
+				System.out.println("Dommage, vous avez perdu alors qu'il vous restait " + (compteur+1) + " case(s) à découvrir");
+				
 			}
-			
-			// On actualise l'affichage de la grille
-			System.out.println(this.g.toString());
-			
-			// On test si on a gagné ou pas
-			if (compteur == 0)
+			else
 			{
-				jouer = 0;
-				System.out.println("GAGNER");
+				System.out.println("/** Nombres de cases restantes à dévouvrir : " + compteur + " **/");
+				System.out.println("-------------------------------------------------");
+							
+				// On test si on a gagné ou pas
+				if (compteur == 0)
+					{
+					jouer = 0;
+					System.out.println("GAGNER");
+				}
 			}
 			
-			// On fait une pause
 			try
 			{
 				Thread.sleep(3000);
@@ -275,10 +280,18 @@ public class Demineur
 	 */
 	public void utilisateurJoue()
 	{
+		/////-----------------------------------/////
+		/////--------- Variable locale ---------/////
+		/////-----------------------------------/////
 		int jouer = 1;
 		int compteur = ((this.g.getHauteur()*this.g.getLargeur())-this.g.getNbMines());
 		
-		// On fait une pause
+		/////-----------------------------------/////
+		/////------------ Programme ------------/////
+		/////-----------------------------------/////
+		System.out.println("-------------------------------");
+		System.out.println("-- Bienvenue sur le démineur --");
+		System.out.println("-------------------------------");
 		try
 		{
 			Thread.sleep(3000);
@@ -288,12 +301,12 @@ public class Demineur
 			// ici on peut ignorer l exception
 		}	
 		
-		// Tantque jouer est différent de 0, on joue
 		while (jouer != 0)
 		{
 			// On créer un nouveau scanner permettant de récupérer ce que tape l'utilisateur
 			Scanner sc = new Scanner(System.in);
 			
+			// Saisie de l'abcisse par l'utilisateur
 			System.out.println("Veuillez saisir l'abscisse de la cellule :");
 			int choixX = sc.nextInt();
 			while (choixX > this.g.getLargeur())
@@ -303,6 +316,7 @@ public class Demineur
 				choixX = sc.nextInt();
 			}
 			
+			// Saisie de l'ordonnée par l'utilisateur
 			System.out.println("Veuillez saisir l'ordonnée de la cellule :");
 			int choixY = sc.nextInt();
 			while (choixY > this.g.getHauteur())
@@ -313,7 +327,6 @@ public class Demineur
 			}
 			
 			System.out.println("Vous avez choisi(e) la cellule [" + choixX + "," + choixY + "]");
-			
 			Cellule c = this.g.getCellule(choixX-1, choixY-1);
 			
 			// On test si la cellule n'a pas encore été decouverte
@@ -325,28 +338,26 @@ public class Demineur
 				--compteur;
 			}
 			
-			System.out.println("Cellule choisie : " + choixX + " ; " + choixY);
-			System.out.println("// Nombres de cases vides restantes: " + compteur + " //");
-			
-			// On vérifie que nous somme pas tombé sur une mine
+			// On test si on est sur une mine
 			if (c.getPresenceMine())
 			{
 				jouer = 0;
-				System.out.println("PERDU");
-				System.out.println("Dommage, il vous restait "+(compteur+1)+"case(s) non découverte");
+				System.out.println("GAME OVER");
+				System.out.println("Dommage, vous avez perdu alors qu'il vous restait " + (compteur+1) + " case(s) à découvrir");
 			}
-			
-			// On actualise l'affichage de la grille
-			System.out.println(this.g.toString());
-			
-			// On test si on a gagné ou pas
-			if (compteur == 0)
+			else
 			{
-				jouer = 0;
-				System.out.println("GAGNER");
+				System.out.println("/** Nombres de cases restantes à dévouvrir : " + compteur + " **/");
+				System.out.println("-------------------------------------------------");	
+				
+				// On test si on a gagné ou pas
+				if (compteur == 0)
+				{
+					jouer = 0;
+					System.out.println("GAGNER");
+				}
 			}
 			
-			// On fait une pause
 			try
 			{
 				Thread.sleep(3000);
