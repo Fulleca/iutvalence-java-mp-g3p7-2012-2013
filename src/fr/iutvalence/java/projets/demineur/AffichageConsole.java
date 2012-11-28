@@ -1,9 +1,9 @@
 package fr.iutvalence.java.projets.demineur;
 
 
-public class AffichageConsole implements Affichage
+public class AffichageConsole implements InterfaceAffichage
 {	
-	public void AfficherGrille()
+	public void afficherGrille()
 	{
 		
 	}
