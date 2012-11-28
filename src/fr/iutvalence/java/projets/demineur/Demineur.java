@@ -2,7 +2,7 @@ package fr.iutvalence.java.projets.demineur;
 
 import java.util.Random;
 import java.util.Scanner;
-
+import fr.iutvalence.java.projets.demineur.AffichageConsole;
 /**
  * Classe de gestion d'une partie de demineur
  * classe qui reprendra les autres classes pour pouvoir joue
@@ -207,9 +207,9 @@ public class Demineur
 		/////-----------------------------------/////
 		/////------------ Programme ------------/////
 		/////-----------------------------------/////
-		System.out.println("-------------------------------");
+		/*System.out.println("-------------------------------");
 		System.out.println("-- Bienvenue sur le démineur --");
-		System.out.println("-------------------------------");
+		System.out.println("-------------------------------");*/
 		try
 		{
 			Thread.sleep(3000);
@@ -227,7 +227,7 @@ public class Demineur
 			int y = mineAleatoire.nextInt(this.g.getHauteur());
 			
 			Cellule c = this.g.getCellule(x,y);
-			System.out.println("Cellule choisie : [" + (x+1) + "," + (y+1) + "]");
+			/*System.out.println("Cellule choisie : [" + (x+1) + "," + (y+1) + "]");*/
 			
 			// On test si la cellule n'a pas encore été decouverte
 			// Si elle ne l'a pas été, on décrémente le compteur
@@ -243,7 +243,7 @@ public class Demineur
 			{
 				jouer = 0;
 				System.out.println("GAME OVER");
-				System.out.println("Dommage,il vous restait " + (compteur+1) + " case(s) à découvrir");
+				System.out.println("Dommage,il vous restait " + (compteur + 1) + " case(s) à découvrir");
 				System.out.println("---------------------------------------------");
 			}
 			else
@@ -256,7 +256,7 @@ public class Demineur
 				if (compteur == 0)
 					{
 					jouer = 0;
-					System.out.println("GAGNER");
+					/*System.out.println("GAGNER");*/
 				}
 			}
 			//System.out.println(this.g.toString());   //Affichage du tableau pour verification
@@ -271,7 +271,7 @@ public class Demineur
 		}
 		
 		// Fin du démineur
-		System.out.println("Fin du démineur");
+		/*System.out.println("Fin du démineur");*/
 	}
 	
 	
@@ -290,9 +290,9 @@ public class Demineur
 		/////-----------------------------------/////
 		/////------------ Programme ------------/////
 		/////-----------------------------------/////
-		System.out.println("-------------------------------");
+		/*System.out.println("-------------------------------");
 		System.out.println("-- Bienvenue sur le démineur --");
-		System.out.println("-------------------------------");
+		System.out.println("-------------------------------");*/
 		try
 		{
 			Thread.sleep(3000);
@@ -308,24 +308,24 @@ public class Demineur
 			Scanner sc = new Scanner(System.in);
 			
 			// Saisie de l'abcisse par l'utilisateur
-			System.out.println("Veuillez saisir l'abscisse de la cellule :");
+			/*System.out.println("Veuillez saisir l'abscisse de la cellule :");*/
 			int choixX = sc.nextInt();
 			while (choixX > this.g.getLargeur())
 			{
-				System.out.println("----------------------------------------------------------");
+				/*System.out.println("----------------------------------------------------------");
 				System.out.println("Valeur non valide - Dépassement de la largeur de la grille");
-				System.out.println("Veuillez re-saisir l'abscisse de la cellule :");
+				System.out.println("Veuillez re-saisir l'abscisse de la cellule :");*/
 				choixX = sc.nextInt();
 			}
 			
 			// Saisie de l'ordonnée par l'utilisateur
-			System.out.println("Veuillez saisir l'ordonnée de la cellule :");
+			/*System.out.println("Veuillez saisir l'ordonnée de la cellule :");*/
 			int choixY = sc.nextInt();
 			while (choixY > this.g.getHauteur())
 			{
-				System.out.println("----------------------------------------------------------");
+				/*System.out.println("----------------------------------------------------------");
 				System.out.println("Valeur non valide - Dépassement de la hauteur de la grille");
-				System.out.println("Veuillez re-saisir l'ordonnée de la cellule :");
+				System.out.println("Veuillez re-saisir l'ordonnée de la cellule :");*/
 				choixY = sc.nextInt();
 			}
 			
@@ -359,7 +359,7 @@ public class Demineur
 				if (compteur == 0)
 				{
 					jouer = 0;
-					System.out.println("GAGNER");
+					/*System.out.println("GAGNER");*/
 				}
 			}
 			//System.out.println(g.toString());   //Affichage du tableau pour verification
@@ -374,7 +374,7 @@ public class Demineur
 		}
 		
 		// Fin du démineur
-		System.out.println("Fin du démineur");
+		/*System.out.println("Fin du démineur");*/
 	}
 	
 	/**
