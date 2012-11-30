@@ -2,7 +2,7 @@ package fr.iutvalence.java.projets.demineur;
 
 import java.util.Random;
 import java.util.Scanner;
-import fr.iutvalence.java.projets.demineur.AffichageConsole;
+
 /**
  * Classe de gestion d'une partie de demineur
  * classe qui reprendra les autres classes pour pouvoir joue
@@ -25,7 +25,7 @@ public class Demineur
 	 * Définition d'une grille ayant pour nom g
 	 */
 	private Grille g;
-
+	
 	//-----------------------------------------------------------------------
 	// Constructeurs
 	//-----------------------------------------------------------------------
@@ -203,13 +203,10 @@ public class Demineur
 		/////-----------------------------------/////
 		int jouer = 1;
 		int compteur = ((this.g.getHauteur()*this.g.getLargeur())-this.g.getNbMines());
-			
+		AffichageConsole affiche = new AffichageConsole();
 		/////-----------------------------------/////
 		/////------------ Programme ------------/////
 		/////-----------------------------------/////
-		/*System.out.println("-------------------------------");
-		System.out.println("-- Bienvenue sur le démineur --");
-		System.out.println("-------------------------------");*/
 		try
 		{
 			Thread.sleep(3000);
@@ -227,7 +224,7 @@ public class Demineur
 			int y = mineAleatoire.nextInt(this.g.getHauteur());
 			
 			Cellule c = this.g.getCellule(x,y);
-			/*System.out.println("Cellule choisie : [" + (x+1) + "," + (y+1) + "]");*/
+			affiche.messageChoixCelulle(this.g, x, y);
 			
 			// On test si la cellule n'a pas encore été decouverte
 			// Si elle ne l'a pas été, on décrémente le compteur
@@ -242,24 +239,20 @@ public class Demineur
 			if (c.getPresenceMine())
 			{
 				jouer = 0;
-				System.out.println("GAME OVER");
-				System.out.println("Dommage,il vous restait " + (compteur + 1) + " case(s) à découvrir");
-				System.out.println("---------------------------------------------");
+				affiche.messageGameOver(compteur);
 			}
 			else
 			{
-				System.out.println("ATTENTION ! Il y a " + this.g.getCellule(x, y).nbMinesVoisines + " mine(s) autour de la cellule [" + (x+1) + "," + (y+1) + "]");
-				System.out.println("/** Nombre de case(s) restante(s) à dévouvrir : " + compteur + " **/");
-				System.out.println("----------------------------------------------------");
+				affiche.messageContinuerAJouer(this.g, x, y, compteur);
 							
 				// On test si on a gagné ou pas
 				if (compteur == 0)
 					{
 					jouer = 0;
-					/*System.out.println("GAGNER");*/
+					affiche.messageWinner();
 				}
 			}
-			//System.out.println(this.g.toString());   //Affichage du tableau pour verification
+			affiche.afficherGrille(this.g);
 			try
 			{
 				Thread.sleep(3000);
@@ -269,9 +262,8 @@ public class Demineur
 				// ici on peut ignorer l exception
 			}		
 		}
-		
 		// Fin du démineur
-		/*System.out.println("Fin du démineur");*/
+		affiche.messageFinPartie();
 	}
 	
 	
@@ -286,13 +278,11 @@ public class Demineur
 		/////-----------------------------------/////
 		int jouer = 1;
 		int compteur = ((this.g.getHauteur()*this.g.getLargeur())-this.g.getNbMines());
+		AffichageConsole affiche = new AffichageConsole();
 		
 		/////-----------------------------------/////
 		/////------------ Programme ------------/////
 		/////-----------------------------------/////
-		/*System.out.println("-------------------------------");
-		System.out.println("-- Bienvenue sur le démineur --");
-		System.out.println("-------------------------------");*/
 		try
 		{
 			Thread.sleep(3000);
@@ -308,34 +298,31 @@ public class Demineur
 			Scanner sc = new Scanner(System.in);
 			
 			// Saisie de l'abcisse par l'utilisateur
-			/*System.out.println("Veuillez saisir l'abscisse de la cellule :");*/
+			affiche.messageChoixAbcisse();
 			int choixX = sc.nextInt();
-			while (choixX > this.g.getLargeur())
+			while ((choixX > this.g.getLargeur()) || (choixX < 1))
 			{
-				/*System.out.println("----------------------------------------------------------");
-				System.out.println("Valeur non valide - Dépassement de la largeur de la grille");
-				System.out.println("Veuillez re-saisir l'abscisse de la cellule :");*/
+				affiche.messageAbscisseInvalide();
 				choixX = sc.nextInt();
 			}
 			
 			// Saisie de l'ordonnée par l'utilisateur
-			/*System.out.println("Veuillez saisir l'ordonnée de la cellule :");*/
+			affiche.messageChoixOrdonnée();
 			int choixY = sc.nextInt();
-			while (choixY > this.g.getHauteur())
+			while ((choixY > this.g.getHauteur()) || (choixY < 1))     //FIXME Ne fait plus rien
 			{
-				/*System.out.println("----------------------------------------------------------");
-				System.out.println("Valeur non valide - Dépassement de la hauteur de la grille");
-				System.out.println("Veuillez re-saisir l'ordonnée de la cellule :");*/
+				affiche.messageOrdonneeInvalide();
 				choixY = sc.nextInt();
 			}
 			
-			System.out.println("Vous avez choisi(e) la cellule [" + choixX + "," + choixY + "]");
 			Cellule c = this.g.getCellule(choixX-1, choixY-1);
+			affiche.messageChoixCelulle(this.g, (choixX-1), (choixY-1));   
+			
 			
 			// On test si la cellule n'a pas encore été decouverte
 			// Si elle ne l'a pas été, on décrémente le compteur
 			// et on change sa visibilité
-			if (!c.getVisibilite())
+			if (!c.getVisibilite()) 
 			{
 				c.setVisibilite(true);
 				--compteur;
@@ -345,24 +332,20 @@ public class Demineur
 			if (c.getPresenceMine())
 			{
 				jouer = 0;
-				System.out.println("GAME OVER");
-				System.out.println("Dommage,il vous restait " + (compteur+1) + " case(s) à découvrir");
-				System.out.println("---------------------------------------------");
+				affiche.messageGameOver(compteur);
 			}
 			else
 			{
-				System.out.println("ATTENTION ! Il y a " + this.g.getCellule(choixX, choixY).nbMinesVoisines + " mine(s) autour de la cellule [" + choixX + "," + choixY + "]");
-				System.out.println("/** Nombre de case(s) restante(s) à dévouvrir : " + compteur + " **/");
-				System.out.println("----------------------------------------------------");
+				affiche.messageContinuerAJouer(this.g, choixX-1, choixY-1, compteur);
 				
 				// On test si on a gagné ou pas
 				if (compteur == 0)
 				{
 					jouer = 0;
-					/*System.out.println("GAGNER");*/
+					affiche.messageWinner();
 				}
 			}
-			//System.out.println(g.toString());   //Affichage du tableau pour verification
+			affiche.afficherGrille(this.g);
 			try
 			{
 				Thread.sleep(3000);
@@ -374,7 +357,7 @@ public class Demineur
 		}
 		
 		// Fin du démineur
-		/*System.out.println("Fin du démineur");*/
+		affiche.messageFinPartie();
 	}
 	
 	/**
