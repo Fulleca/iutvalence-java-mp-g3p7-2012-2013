@@ -45,7 +45,7 @@ public class TestPartieJoueur
 		// Gère le cas ou l'utilisateur n'a pas choisie un mode de jeu
 		else
 		{
-			/*while ((choixMode != 1) || !(choixMode != 2))
+			while ((choixMode != 1) || !(choixMode != 2))
 			{
 				affiche.messageErreurChoixMenu();
 				choixMode = sc.nextInt();
@@ -65,7 +65,7 @@ public class TestPartieJoueur
 				int choixMines = sc.nextInt();
 				Demineur d = new Demineur(choixX,choixY,choixMines);
 				d.utilisateurJoue();
-			}*/
+			}
 		}
 	}
 }

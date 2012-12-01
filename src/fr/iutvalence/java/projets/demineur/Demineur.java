@@ -309,7 +309,7 @@ public class Demineur
 			// Saisie de l'ordonnée par l'utilisateur
 			affiche.messageChoixOrdonnée();
 			int choixY = sc.nextInt();
-			while ((choixY > this.g.getHauteur()) || (choixY < 1))     //FIXME Ne fait plus rien
+			while ((choixY > this.g.getHauteur()) || (choixY < 1))    
 			{
 				affiche.messageOrdonneeInvalide();
 				choixY = sc.nextInt();
