@@ -30,13 +30,6 @@ public class AffichageConsole implements InterfaceAffichage
 		System.out.println(g.toString());	
 	}
 	
-	@Override
-	public void msgBienvenue()
-	{
-		System.out.println("-------------------------------");
-		System.out.println("-- Bienvenue sur le démineur --");
-		System.out.println("-------------------------------");
-	}
 	
 	@Override
 	public void afficherMenu()
@@ -45,26 +38,10 @@ public class AffichageConsole implements InterfaceAffichage
 		System.out.println("1 - Grille de jeu par défaut. Taille de 10x10 avec 10 mines ");
 		System.out.println("2 - Grille de jeu personnalisé. Vous devez spécifier la taille et le nombres de mines de la zone de jeu");
 		System.out.println("Votre choix :");
+		
 	}
 	
-	@Override
-	public void messageChoixLargeur()
-	{
-		System.out.println("Choississez la largeur de la grille de jeu :");
-	}
-	
-	@Override
-	public void messageChoixHauteur()
-	{
-		System.out.println("Choississez la hauteur de la grille de jeu :");
-	}
-	
-	@Override
-	public void messageChoixNombreMines()
-	{
-		System.out.println("Choississez le nombres de mines quie seront dans la grille :");
-	}
-	
+
 	@Override
 	public void messageErreurChoixMenu()
 	{
@@ -78,19 +55,17 @@ public class AffichageConsole implements InterfaceAffichage
 		System.out.println("GAME OVER");
 		System.out.println("Dommage,il vous restait " + (compteur + 1) + " case(s) à découvrir");
 		System.out.println("---------------------------------------------");
+		System.out.println("Fin du démineur");
 	}
 	
 	@Override
 	public void messageWinner()
 	{
 		System.out.println("GAGNER");
-	}
-	
-	@Override
-	public void messageFinPartie()
-	{
+		System.out.println("---------------------------------------------");
 		System.out.println("Fin du démineur");
 	}
+	
 	
 	@Override
 	public void messageChoixCelulle(Grille g, int x, int y)
@@ -108,30 +83,19 @@ public class AffichageConsole implements InterfaceAffichage
 	}
 	
 	@Override
-	public void messageChoixAbcisse()
+	public void message(String chaine)
 	{
-		System.out.println("Veuillez saisir l'abscisse de la cellule :");
+		System.out.println(chaine);
 	}
 	
-	@Override
-	public void messageChoixOrdonnée()
-	{
-		System.out.println("Veuillez saisir l'ordonnée de la cellule :");
-	}
 	
 	@Override
-	public void messageAbscisseInvalide()
+	public void messageInvalide()
 	{
 		System.out.println("----------------------------------------------------------");
-		System.out.println("Valeur non valide - Dépassement de la largeur de la grille");
-		System.out.println("Veuillez re-saisir l'abscisse de la cellule :");
+		System.out.println("Valeur non valide - ");
+		System.out.println("Veuillez re-saisir ");
 	}
 	
-	@Override
-	public void messageOrdonneeInvalide()
-	{
-		System.out.println("----------------------------------------------------------");
-		System.out.println("Valeur non valide - Dépassement de la hauteur de la grille");
-		System.out.println("Veuillez re-saisir l'ordonnée de la cellule :");
-	}
+
 }

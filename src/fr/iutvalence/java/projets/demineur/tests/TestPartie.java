@@ -15,10 +15,7 @@ public class TestPartie
 	public static void main(String[] args)
 	{
 		AffichageConsole affiche = new AffichageConsole();
-		affiche.msgBienvenue();
-		Demineur d = new Demineur(2,4,2);
-		
-		d.jouer();
+		Demineur d = new Demineur(2,4,5);
 	}
 
 }

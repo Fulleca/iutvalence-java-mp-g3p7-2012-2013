@@ -16,10 +16,9 @@ public class Demineur
 	//-----------------------------------------------------------------------
 	// Attributs
 	//-----------------------------------------------------------------------		
-	/**
-	 * Booléen spécifiant si le joueur a perdu
-	 */
-	public boolean aPerdu;
+	private int x;
+	
+	private int y;
 	
 	/**
 	 * Définition d'une grille ayant pour nom g
@@ -38,7 +37,7 @@ public class Demineur
 	public Demineur()
 	{
 		this.g = new Grille();
-		this.aPerdu = false;
+
 
 		//--------------------------------------
 		//--- Géneration aléatoire des mines ---
@@ -49,9 +48,13 @@ public class Demineur
 		
 		while (mineGenerer < this.g.getNbMines() + 1)
 		{
-			Cellule c = this.g.getCellule(mineAleatoire.nextInt(this.g.getLargeur()), mineAleatoire.nextInt(this.g.getHauteur())); 
-			c.setPresenceMine(true);
-			mineGenerer++;
+		
+			Cellule c = this.g.getCellule(mineAleatoire.nextInt(this.g.getLargeur()), mineAleatoire.nextInt(this.g.getHauteur()));
+			if(!c.getPresenceMine())
+			{
+				c.setPresenceMine(true);
+				mineGenerer++;
+			}
 		}
 		//-----------------------------------------
 		//--- Algorithme de recherche des mines ---
@@ -119,7 +122,7 @@ public class Demineur
 	public Demineur(int x, int y, int nombresMines)
 	{
 		this.g = new Grille(x,y,nombresMines);
-		this.aPerdu = false;
+
 
 		//--------------------------------------
 		//--- Géneration aléatoire des mines ---
@@ -131,8 +134,11 @@ public class Demineur
 		while (mineGenerer < this.g.getNbMines())
 		{
 			Cellule c = this.g.getCellule(mineAleatoire.nextInt(this.g.getLargeur()), mineAleatoire.nextInt(this.g.getHauteur())); 
+			if(!c.getPresenceMine())
+			{
 			c.setPresenceMine(true);
 			mineGenerer++;
+			}
 		}
 		//-----------------------------------------
 		//--- Algorithme de recherche des mines ---
@@ -186,11 +192,106 @@ public class Demineur
 			}
 		}
 	}	
+	/**
+	 * Méthode permettant à l'utilisateur de jouer une partie de démineur
+	 * en choisissant les cellules sur lesquelles il veut "cliquer"
+	 */
+	public void utilisateurJoue()
+	{
+		/////-----------------------------------/////
+		/////--------- Variable locale ---------/////
+		/////-----------------------------------/////
+		int jouer = 1;
+		int compteur = ((this.g.getHauteur()*this.g.getLargeur())-this.g.getNbMines());
+		// Creation objet interface
+		AffichageConsole affiche = new AffichageConsole();
+		Position pos = new Position(x, y);
+		
+		/////// Saisi de l'utilisateur appel a interface joueur
+		
+		/////-----------------------------------/////
+		/////------------ Programme ------------/////
+		/////-----------------------------------/////
+		try
+		{
+			Thread.sleep(3000);
+		}
+		catch (InterruptedException e)
+		{
+			// ici on peut ignorer l exception
+		}	
+		
+		while (jouer != 0)
+		{
+			
+			// Appel au scanner
+					
+			// Saisie de l'abcisse par l'utilisateur
+			affiche.message("Saisir x :");
+			
+			while ((pos.getX() > this.g.getLargeur()) || (pos.getX() < 1))
+			{
+				affiche.messageInvalide();
+				pos.getX() = sc.nextInt();
+			}
+						
+			// Saisie de l'ordonnée par l'utilisateur
+			affiche.message("Saisir y :");
+			
+			while ((choixY > this.g.getHauteur()) || (choixY < 1))    
+			{
+				affiche.messageInvalide();
+				choixY = sc.nextInt();
+			}
+			
+			
+			Cellule c = this.g.getCellule(choixX-1, choixY-1);
+			affiche.messageChoixCelulle(this.g, (choixX-1), (choixY-1)); 
+			
+  
+			
+			
+			// On test si la cellule n'a pas encore été decouverte
+			// Si elle ne l'a pas été, on décrémente le compteur
+			// et on change sa visibilité
+			if (!c.getVisibilite()) 
+			{
+				c.setVisibilite(true);
+				--compteur;
+			}
+			
+			// On test si on est sur une mine
+			if (c.getPresenceMine())
+			{
+				jouer = 0;
+				affiche.messageGameOver(compteur);
+			}
+			else
+			{
+				affiche.messageContinuerAJouer(this.g, choixX-1, choixY-1, compteur);
+				
+				// On test si on a gagné ou pas
+				if (compteur == 0)
+				{
+					jouer = 0;
+					affiche.messageWinner();
+				}
+			}
+			affiche.afficherGrille(this.g);
+			try
+			{
+				Thread.sleep(3000);
+			}
+			catch (InterruptedException e)
+			{
+				// ici on peut ignorer l exception
+			}	
+		}
+		
+		// Fin du démineur
+
+	}
 	
-	
-	//-----------------------------------------------------------------------
-	// Méthodes
-	//-----------------------------------------------------------------------
 	
 	/**
 	 * Méthode permettant de rendre indépendant le démineur
@@ -263,120 +364,11 @@ public class Demineur
 			}		
 		}
 		// Fin du démineur
-		affiche.messageFinPartie();
 	}
 	
 	
-	/**
-	 * Méthode permettant à l'utilisateur de jouer une partie de démineur
-	 * en choisissant les cellules sur lesquelles il veut "cliquer"
-	 */
-	public void utilisateurJoue()
-	{
-		/////-----------------------------------/////
-		/////--------- Variable locale ---------/////
-		/////-----------------------------------/////
-		int jouer = 1;
-		int compteur = ((this.g.getHauteur()*this.g.getLargeur())-this.g.getNbMines());
-		AffichageConsole affiche = new AffichageConsole();
-		
-		/////-----------------------------------/////
-		/////------------ Programme ------------/////
-		/////-----------------------------------/////
-		try
-		{
-			Thread.sleep(3000);
-		}
-		catch (InterruptedException e)
-		{
-			// ici on peut ignorer l exception
-		}	
-		
-		while (jouer != 0)
-		{
-			// On créer un nouveau scanner permettant de récupérer ce que tape l'utilisateur
-			Scanner sc = new Scanner(System.in);
-			
-			// Saisie de l'abcisse par l'utilisateur
-			affiche.messageChoixAbcisse();
-			int choixX = sc.nextInt();
-			while ((choixX > this.g.getLargeur()) || (choixX < 1))
-			{
-				affiche.messageAbscisseInvalide();
-				choixX = sc.nextInt();
-			}
-			
-			// Saisie de l'ordonnée par l'utilisateur
-			affiche.messageChoixOrdonnée();
-			int choixY = sc.nextInt();
-			while ((choixY > this.g.getHauteur()) || (choixY < 1))    
-			{
-				affiche.messageOrdonneeInvalide();
-				choixY = sc.nextInt();
-			}
-			
-			Cellule c = this.g.getCellule(choixX-1, choixY-1);
-			affiche.messageChoixCelulle(this.g, (choixX-1), (choixY-1));   
-			
-			
-			// On test si la cellule n'a pas encore été decouverte
-			// Si elle ne l'a pas été, on décrémente le compteur
-			// et on change sa visibilité
-			if (!c.getVisibilite()) 
-			{
-				c.setVisibilite(true);
-				--compteur;
-			}
-			
-			// On test si on est sur une mine
-			if (c.getPresenceMine())
-			{
-				jouer = 0;
-				affiche.messageGameOver(compteur);
-			}
-			else
-			{
-				affiche.messageContinuerAJouer(this.g, choixX-1, choixY-1, compteur);
-				
-				// On test si on a gagné ou pas
-				if (compteur == 0)
-				{
-					jouer = 0;
-					affiche.messageWinner();
-				}
-			}
-			affiche.afficherGrille(this.g);
-			try
-			{
-				Thread.sleep(3000);
-			}
-			catch (InterruptedException e)
-			{
-				// ici on peut ignorer l exception
-			}	
-		}
-		
-		// Fin du démineur
-		affiche.messageFinPartie();
-	}
 	
-	/**
-	 * Défini la partie comme étant perdue
-	 * @return false
-	 */
-	public boolean perdu()
-	{
-		return this.aPerdu = true;
-	}
-		
-	/**
-	 * Défini la partie comme n'étant pas perdu
-	 * @return true
-	 */
-	public boolean pasPerdu()
-	{
-		return this.aPerdu = false;
-	}
 
+	
  }
 	
