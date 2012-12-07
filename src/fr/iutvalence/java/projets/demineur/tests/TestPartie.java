@@ -1,6 +1,5 @@
 package fr.iutvalence.java.projets.demineur.tests;
 
-import fr.iutvalence.java.projets.demineur.AffichageConsole;
 import fr.iutvalence.java.projets.demineur.Demineur;
 
 /**
@@ -14,10 +13,8 @@ public class TestPartie
 	 */
 	public static void main(String[] args)
 	{
-		AffichageConsole affiche = new AffichageConsole();
-		affiche.msgBienvenue();
+		System.out.println(" Bienvenue sur le démineur");
 		Demineur d = new Demineur(2,4,2);
-		
 		d.jouer();
 	}
 

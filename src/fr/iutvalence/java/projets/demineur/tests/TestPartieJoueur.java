@@ -1,6 +1,5 @@
 package fr.iutvalence.java.projets.demineur.tests;
 
-import fr.iutvalence.java.projets.demineur.AffichageConsole;
 import fr.iutvalence.java.projets.demineur.Demineur;
 import java.util.Scanner;
 
@@ -19,8 +18,10 @@ public class TestPartieJoueur
 	 */
 	public static void main(String[] args)
 	{
-		AffichageConsole affiche = new AffichageConsole();
-		affiche.afficherMenu();
+		System.out.println("Veuillez choisir votre mode de jeu");
+		System.out.println("1. Grille de jeu par défaut. Initialise une grille de 10x10 avec 10 mines");
+		System.out.println("1. Grille de jeu personnalisé.");
+		System.out.println("-------------------------------------------------------------------------");
 		Scanner sc = new Scanner(System.in);
 		int choixMode = sc.nextInt();
 		
@@ -33,11 +34,11 @@ public class TestPartieJoueur
 		// Correspond au second mode de jeu
 		else if (choixMode == 2)
 		{
-			affiche.messageChoixLargeur();
+			System.out.println("Veuillez choisir la largeur de la grille");
 			int choixX = sc.nextInt();
-			affiche.messageChoixHauteur();
+			System.out.println("Veuillez choisir la hauteur de la grille");
 			int choixY = sc.nextInt();
-			affiche.messageChoixNombreMines();
+			System.out.println("Veuillez choisir le nombre de mines de la grille");
 			int choixMines = sc.nextInt();
 			Demineur d = new Demineur(choixX,choixY,choixMines);
 			d.utilisateurJoue();
@@ -47,7 +48,7 @@ public class TestPartieJoueur
 		{
 			while ((choixMode != 1) || !(choixMode != 2))
 			{
-				affiche.messageErreurChoixMenu();
+				System.out.println("Erreur - le menu voulu n'existe pas");
 				choixMode = sc.nextInt();
 			}
 			if (choixMode == 1)
@@ -57,11 +58,11 @@ public class TestPartieJoueur
 			}
 			else if (choixMode == 2)
 			{
-				affiche.messageChoixLargeur();
+				System.out.println("Veuillez choisir la largeur de la grille");
 				int choixX = sc.nextInt();
-				affiche.messageChoixHauteur();
+				System.out.println("Veuillez choisir la hauteur de la grille");
 				int choixY = sc.nextInt();
-				affiche.messageChoixNombreMines();
+				System.out.println("Veuillez choisir le nombre de mines de la grille");
 				int choixMines = sc.nextInt();
 				Demineur d = new Demineur(choixX,choixY,choixMines);
 				d.utilisateurJoue();

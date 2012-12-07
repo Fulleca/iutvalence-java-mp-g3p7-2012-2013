@@ -3,6 +3,8 @@ package fr.iutvalence.java.projets.demineur;
 import java.util.Random;
 import java.util.Scanner;
 
+import fr.iutvalence.java.projets.demineur.mvc.AffichageConsole;
+
 /**
  * Classe de gestion d'une partie de demineur
  * classe qui reprendra les autres classes pour pouvoir joue
@@ -203,7 +205,7 @@ public class Demineur
 		/////-----------------------------------/////
 		int jouer = 1;
 		int compteur = ((this.g.getHauteur()*this.g.getLargeur())-this.g.getNbMines());
-		AffichageConsole affiche = new AffichageConsole();
+
 		/////-----------------------------------/////
 		/////------------ Programme ------------/////
 		/////-----------------------------------/////
@@ -224,7 +226,7 @@ public class Demineur
 			int y = mineAleatoire.nextInt(this.g.getHauteur());
 			
 			Cellule c = this.g.getCellule(x,y);
-			affiche.messageChoixCelulle(this.g, x, y);
+			System.out.println("Cellule choisie : [" + (x+1) + "," + (y+1) + "]");
 			
 			// On test si la cellule n'a pas encore été decouverte
 			// Si elle ne l'a pas été, on décrémente le compteur
@@ -239,20 +241,24 @@ public class Demineur
 			if (c.getPresenceMine())
 			{
 				jouer = 0;
-				affiche.messageGameOver(compteur);
+				System.out.println("GAME OVER");
+				System.out.println("Dommage,il vous restait " + (compteur + 1) + " case(s) à découvrir");
+				System.out.println("---------------------------------------------");
 			}
 			else
 			{
-				affiche.messageContinuerAJouer(this.g, x, y, compteur);
+				System.out.println("ATTENTION ! Il y a " + g.getCellule(x, y).nbMinesVoisines + " mine(s) autour de la cellule [" + (x+1) + "," + (y+1) + "]");
+				System.out.println("/** Nombre de case(s) restante(s) à dévouvrir : " + compteur + " **/" );
+				System.out.println("----------------------------------------------------");
 							
 				// On test si on a gagné ou pas
 				if (compteur == 0)
 					{
 					jouer = 0;
-					affiche.messageWinner();
+					System.out.println("Bravo, vous avez gagné la partie");
 				}
 			}
-			affiche.afficherGrille(this.g);
+			System.out.println(this.g.toString());
 			try
 			{
 				Thread.sleep(3000);
@@ -263,12 +269,10 @@ public class Demineur
 			}		
 		}
 		// Fin du démineur
-		affiche.messageFinPartie();
+		System.out.println("FIN DE LA PARTIE");
 	}
 	
-	
-	/**
-	 * Méthode permettant à l'utilisateur de jouer une partie de démineur
+	/** Méthode permettant à l'utilisateur de jouer une partie de démineur
 	 * en choisissant les cellules sur lesquelles il veut "cliquer"
 	 */
 	public void utilisateurJoue()
@@ -298,20 +302,20 @@ public class Demineur
 			Scanner sc = new Scanner(System.in);
 			
 			// Saisie de l'abcisse par l'utilisateur
-			affiche.messageChoixAbcisse();
+			System.out.println("veuillez choisir la coordonnée x de la cellule a decouvrir");
 			int choixX = sc.nextInt();
 			while ((choixX > this.g.getLargeur()) || (choixX < 1))
 			{
-				affiche.messageAbscisseInvalide();
+				System.out.println("La coordonnée spécifié est introuvable");
 				choixX = sc.nextInt();
 			}
 			
 			// Saisie de l'ordonnée par l'utilisateur
-			affiche.messageChoixOrdonnée();
+			System.out.println("veuillez choisir la coordonnée y de la cellule a decouvrir");
 			int choixY = sc.nextInt();
 			while ((choixY > this.g.getHauteur()) || (choixY < 1))    
 			{
-				affiche.messageOrdonneeInvalide();
+				System.out.println("La coordonnée spécifié est introuvable");
 				choixY = sc.nextInt();
 			}
 			
@@ -342,7 +346,7 @@ public class Demineur
 				if (compteur == 0)
 				{
 					jouer = 0;
-					affiche.messageWinner();
+					System.out.println("Bravo, vous avez gagné la partie");
 				}
 			}
 			affiche.afficherGrille(this.g);
@@ -357,26 +361,7 @@ public class Demineur
 		}
 		
 		// Fin du démineur
-		affiche.messageFinPartie();
+		System.out.println("FIN DE LA PARTIE");
 	}
-	
-	/**
-	 * Défini la partie comme étant perdue
-	 * @return false
-	 */
-	public boolean perdu()
-	{
-		return this.aPerdu = true;
-	}
-		
-	/**
-	 * Défini la partie comme n'étant pas perdu
-	 * @return true
-	 */
-	public boolean pasPerdu()
-	{
-		return this.aPerdu = false;
-	}
-
- }
+}
 	
