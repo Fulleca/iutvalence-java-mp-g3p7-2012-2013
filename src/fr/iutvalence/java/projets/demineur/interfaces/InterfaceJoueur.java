@@ -4,7 +4,7 @@ import fr.iutvalence.java.projets.demineur.mvc.Position;
 
 /**
  * @author Loic
- *
+ * Interface joueur
  */
 public interface InterfaceJoueur
 {
