@@ -2,6 +2,8 @@ package fr.iutvalence.java.projets.demineur.mvc;
 
 import java.util.Scanner;
 
+import fr.iutvalence.java.projets.demineur.interfaces.InterfaceAffichage;
+import fr.iutvalence.java.projets.demineur.interfaces.InterfaceJoueur;
 import fr.iutvalence.java.projets.demineur.mvc.DemineurMVC;;
 
 /**
@@ -10,7 +12,15 @@ import fr.iutvalence.java.projets.demineur.mvc.DemineurMVC;;
  */
 public class TestPartieJoueurMVC
 {
+		/**
+		 * Construction d'un objet affichage console via l'interface "InterfaceAffichage"
+		 */
+		static InterfaceAffichage msgConsole = new AffichageConsole();
 		
+		/**
+		 * Construction d'un objet JoueurClavier via l'interface "InterfaceJoueur"
+		 */
+		InterfaceJoueur choixClavier = new JoueurClavier();
 		
 		/**
 		 * @param args Argument de la fonction main
@@ -33,11 +43,11 @@ public class TestPartieJoueurMVC
 			// Correspond au second mode de jeu
 			else if (choixMode == 2)
 			{
-				System.out.println("Veuillez choisir la largeur de la grille");
+				msgConsole.afficherMsg("Veuillez choisir la largeur de la grille");
 				int choixX = sc.nextInt();
-				System.out.println("Veuillez choisir la hauteur de la grille");
+				msgConsole.afficherMsg("Veuillez choisir la hauteur de la grille");
 				int choixY = sc.nextInt();
-				System.out.println("Veuillez choisir le nombre de mines de la grille");
+				msgConsole.afficherMsg("Veuillez choisir le nombre de mines de la grille");
 				int choixMines = sc.nextInt();
 				DemineurMVC d = new DemineurMVC(choixX,choixY,choixMines);
 				d.utilisateurJoue();
@@ -47,7 +57,8 @@ public class TestPartieJoueurMVC
 			{
 				while ((choixMode != 1) || !(choixMode != 2))
 				{
-					System.out.println("Erreur - le menu voulu n'existe pas");
+					msgConsole.afficherMsg("Erreur - le menu voulu n'existe pas");
+					System.out.println();
 					choixMode = sc.nextInt();
 				}
 				if (choixMode == 1)
@@ -57,11 +68,11 @@ public class TestPartieJoueurMVC
 				}
 				else if (choixMode == 2)
 				{
-					System.out.println("Veuillez choisir la largeur de la grille");
+					msgConsole.afficherMsg("Veuillez choisir la largeur de la grille");
 					int choixX = sc.nextInt();
-					System.out.println("Veuillez choisir la hauteur de la grille");
+					msgConsole.afficherMsg("Veuillez choisir la hauteur de la grille");
 					int choixY = sc.nextInt();
-					System.out.println("Veuillez choisir le nombre de mines de la grille");
+					msgConsole.afficherMsg("Veuillez choisir le nombre de mines de la grille");
 					int choixMines = sc.nextInt();
 					DemineurMVC d = new DemineurMVC(choixX,choixY,choixMines);
 					d.utilisateurJoue();
