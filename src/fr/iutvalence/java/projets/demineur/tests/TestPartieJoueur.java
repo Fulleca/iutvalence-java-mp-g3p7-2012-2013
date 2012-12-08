@@ -18,10 +18,10 @@ public class TestPartieJoueur
 	 */
 	public static void main(String[] args)
 	{
-		System.out.println("Veuillez choisir votre mode de jeu");
-		System.out.println("1. Grille de jeu par défaut. Initialise une grille de 10x10 avec 10 mines");
-		System.out.println("1. Grille de jeu personnalisé.");
-		System.out.println("-------------------------------------------------------------------------");
+		System.out.println("Veuillez choisir votre mode de jeu (en entrant le numéro correspondant au mode) :");
+		System.out.println("1 - Grille de jeu par défaut. Taille de 10x10 avec 10 mines ");
+		System.out.println("2 - Grille de jeu personnalisé. Vous devez spécifier la taille et le nombres de mines de la zone de jeu");
+		System.out.println("Votre choix :");
 		Scanner sc = new Scanner(System.in);
 		int choixMode = sc.nextInt();
 		
@@ -70,3 +70,4 @@ public class TestPartieJoueur
 		}
 	}
 }
+

@@ -18,10 +18,9 @@ public class Demineur
 	//-----------------------------------------------------------------------
 	// Attributs
 	//-----------------------------------------------------------------------		
-	/**
-	 * Booléen spécifiant si le joueur a perdu
-	 */
-	public boolean aPerdu;
+	private int x;
+	
+	private int y;
 	
 	/**
 	 * Définition d'une grille ayant pour nom g
@@ -40,7 +39,7 @@ public class Demineur
 	public Demineur()
 	{
 		this.g = new Grille();
-		this.aPerdu = false;
+
 
 		//--------------------------------------
 		//--- Géneration aléatoire des mines ---
@@ -51,9 +50,13 @@ public class Demineur
 		
 		while (mineGenerer < this.g.getNbMines() + 1)
 		{
-			Cellule c = this.g.getCellule(mineAleatoire.nextInt(this.g.getLargeur()), mineAleatoire.nextInt(this.g.getHauteur())); 
-			c.setPresenceMine(true);
-			mineGenerer++;
+		
+			Cellule c = this.g.getCellule(mineAleatoire.nextInt(this.g.getLargeur()), mineAleatoire.nextInt(this.g.getHauteur()));
+			if(!c.getPresenceMine())
+			{
+				c.setPresenceMine(true);
+				mineGenerer++;
+			}
 		}
 		//-----------------------------------------
 		//--- Algorithme de recherche des mines ---
@@ -121,7 +124,7 @@ public class Demineur
 	public Demineur(int x, int y, int nombresMines)
 	{
 		this.g = new Grille(x,y,nombresMines);
-		this.aPerdu = false;
+
 
 		//--------------------------------------
 		//--- Géneration aléatoire des mines ---
@@ -133,8 +136,11 @@ public class Demineur
 		while (mineGenerer < this.g.getNbMines())
 		{
 			Cellule c = this.g.getCellule(mineAleatoire.nextInt(this.g.getLargeur()), mineAleatoire.nextInt(this.g.getHauteur())); 
+			if(!c.getPresenceMine())
+			{
 			c.setPresenceMine(true);
 			mineGenerer++;
+			}
 		}
 		//-----------------------------------------
 		//--- Algorithme de recherche des mines ---
@@ -188,11 +194,6 @@ public class Demineur
 			}
 		}
 	}	
-	
-	
-	//-----------------------------------------------------------------------
-	// Méthodes
-	//-----------------------------------------------------------------------
 	
 	/**
 	 * Méthode permettant de rendre indépendant le démineur
@@ -282,12 +283,11 @@ public class Demineur
 		/////-----------------------------------/////
 		int jouer = 1;
 		int compteur = ((this.g.getHauteur()*this.g.getLargeur())-this.g.getNbMines());
-		AffichageConsole affiche = new AffichageConsole();
 		
 		/////-----------------------------------/////
 		/////------------ Programme ------------/////
 		/////-----------------------------------/////
-		affiche.afficherGrille(this.g);
+		System.out.println(this.g.toString());
 		try
 		{
 			Thread.sleep(3000);
@@ -321,7 +321,7 @@ public class Demineur
 			}
 			
 			Cellule c = this.g.getCellule(choixX-1, choixY-1);
-			affiche.messageChoixCelulle(this.g, (choixX-1), (choixY-1));   
+			System.out.println("Cellule choisie : [" + (this.x+1) + "," + (this.y+1) + "]");
 			
 			
 			// On test si la cellule n'a pas encore été decouverte
@@ -337,11 +337,13 @@ public class Demineur
 			if (c.getPresenceMine())
 			{
 				jouer = 0;
-				affiche.messageGameOver(compteur);
+				System.out.println("Dommage vous avez perdu alors qu'il vous restait " + compteur + " cellules à découvrir");
 			}
 			else
 			{
-				affiche.messageContinuerAJouer(this.g, choixX-1, choixY-1, compteur);
+				System.out.println("ATTENTION ! Il y a " + g.getCellule(x, y).nbMinesVoisines + " mine(s) autour de la cellule [" + (x+1) + "," + (y+1) + "]");
+				System.out.println("/** Nombre de case(s) restante(s) à dévouvrir : " + compteur + " **/" );
+				System.out.println("----------------------------------------------------");
 				
 				// On test si on a gagné ou pas
 				if (compteur == 0)
@@ -350,7 +352,7 @@ public class Demineur
 					System.out.println("Bravo, vous avez gagné la partie");
 				}
 			}
-			affiche.afficherGrille(this.g);
+			System.out.println(this.g.toString());
 			try
 			{
 				Thread.sleep(3000);
@@ -365,4 +367,5 @@ public class Demineur
 		System.out.println("FIN DE LA PARTIE");
 	}
 }
+
 	
