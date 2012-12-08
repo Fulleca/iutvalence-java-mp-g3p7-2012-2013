@@ -287,6 +287,7 @@ public class Demineur
 		/////-----------------------------------/////
 		/////------------ Programme ------------/////
 		/////-----------------------------------/////
+		affiche.afficherGrille(this.g);
 		try
 		{
 			Thread.sleep(3000);
