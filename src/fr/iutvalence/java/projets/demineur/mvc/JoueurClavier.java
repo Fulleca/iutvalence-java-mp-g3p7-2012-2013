@@ -5,10 +5,9 @@ import java.util.Scanner;
 import fr.iutvalence.java.projets.demineur.interfaces.InterfaceJoueur;
 
 /**
+ * @author Loic
  * Classe SaisieClavier regroupant les méthodes de saisie clavier de l'utilisateur
  * Cette classe implémente InterfaceClavier
- * @author Loic
- *
  */
 public class JoueurClavier implements InterfaceJoueur
 {
@@ -40,7 +39,7 @@ public class JoueurClavier implements InterfaceJoueur
 	}
 
 	/**
-	 * @param choixX Modifie la coordonnée x de la cellule 
+	 * @param choixX Modifie la coordonnée x (choisie par l'utilisateur) de la cellule 
 	 */
 	public void setChoixX(int choixX)
 	{
@@ -48,7 +47,7 @@ public class JoueurClavier implements InterfaceJoueur
 	}
 
 	/**
-	 * @return La coordonnée t de la cellule choisi par l'utilisateur
+	 * @return La coordonnée x de la cellule choisi par l'utilisateur
 	 */
 	public int getChoixY()
 	{
@@ -56,7 +55,7 @@ public class JoueurClavier implements InterfaceJoueur
 	}
 
 	/**
-	 * @param choixY
+	 * @param choixY MModifie la coordonnée y (choisie par l'utilisateur) de la cellule 
 	 */
 	public void setChoixY(int choixY)
 	{

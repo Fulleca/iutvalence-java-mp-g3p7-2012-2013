@@ -9,7 +9,8 @@ import fr.iutvalence.java.projets.demineur.mvc.Position;
 public interface InterfaceJoueur
 {
 	/**
-	 * @return
+	 * Méthode permettant de retourner la cellule a decouvrir
+	 * @return la position de la case a decouvrir
 	 */
 	public Position getCaseADecouvrir();
 }

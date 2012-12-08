@@ -6,6 +6,12 @@ import java.util.Scanner;
 import fr.iutvalence.java.projets.demineur.Cellule;
 import fr.iutvalence.java.projets.demineur.Grille;
 
+/**
+ * @author Loic
+ * Classe permettant de jouer une partie de demineur
+ * en utilisant des interfaces pour pouvoir séparer un Demineur
+ * de l'affichage et de l'utilisateur (saisie)
+ */
 public class DemineurMVC
 {
 		//-----------------------------------------------------------------------
