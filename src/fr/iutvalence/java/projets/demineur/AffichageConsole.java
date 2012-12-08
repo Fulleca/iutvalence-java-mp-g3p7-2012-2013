@@ -31,15 +31,6 @@ public class AffichageConsole implements InterfaceAffichage
 	}
 	
 	@Override
-	public void messageGameOver(int compteur)
-	{
-		System.out.println("GAME OVER");
-		System.out.println("Dommage,il vous restait " + (compteur + 1) + " case(s) à découvrir");
-		System.out.println("---------------------------------------------");
-		System.out.println("Fin du démineur");
-	}
-	
-	@Override
 	public void messageChoixCelulle(Grille g, int x, int y)
 	{
 		g.getCellule(x,y);
