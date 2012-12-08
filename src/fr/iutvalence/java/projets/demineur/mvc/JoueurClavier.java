@@ -2,6 +2,7 @@ package fr.iutvalence.java.projets.demineur.mvc;
 
 import java.util.Scanner;
 
+import fr.iutvalence.java.projets.demineur.interfaces.InterfaceConfigDemineur;
 import fr.iutvalence.java.projets.demineur.interfaces.InterfaceJoueur;
 
 /**
@@ -12,14 +13,16 @@ import fr.iutvalence.java.projets.demineur.interfaces.InterfaceJoueur;
 public class JoueurClavier implements InterfaceJoueur
 {
 	/**
-	 * 
+	 * Coordonnée x d'une cellule
 	 */
 	private int choixX;
 	
 	/**
-	 * 
+	 * Coordonnée y d'une cellule
 	 */
 	private int choixY;
+	
+	//Scanner choixMenu = new Scanner(System.in);
 
 	@Override
 	public Position getCaseADecouvrir()
@@ -61,5 +64,4 @@ public class JoueurClavier implements InterfaceJoueur
 	{
 		this.choixY = choixY;
 	}
-
-}
+}	

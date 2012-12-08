@@ -20,17 +20,18 @@ public class TestPartieJoueurMVC
 		/**
 		 * Construction d'un objet JoueurClavier via l'interface "InterfaceJoueur"
 		 */
-		InterfaceJoueur choixClavier = new JoueurClavier();
+		static InterfaceJoueur choixClavier = new JoueurClavier();
 		
 		/**
 		 * @param args Argument de la fonction main
 		 */
 		public static void main(String[] args)
 		{
-			System.out.println("Veuillez choisir votre mode de jeu");
-			System.out.println("1. Grille de jeu par défaut. Initialise une grille de 10x10 avec 10 mines");
-			System.out.println("1. Grille de jeu personnalisé.");
-			System.out.println("-------------------------------------------------------------------------");
+			msgConsole.afficherMsg("Veuillez choisir votre mode de jeu (en entrant le numéro correspondant au mode) :");
+			msgConsole.afficherMsg("1 - Grille de jeu par défaut. Taille de 10x10 avec 10 mines ");
+			msgConsole.afficherMsg("2 - Grille de jeu personnalisé. Vous devez spécifier la taille et le nombres de mines de la zone de jeu");
+			msgConsole.afficherMsg("Votre choix :");
+			msgConsole.afficherMsg("-------------------------------------------------------------------------");
 			Scanner sc = new Scanner(System.in);
 			int choixMode = sc.nextInt();
 			
