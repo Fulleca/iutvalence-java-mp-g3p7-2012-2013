@@ -3,7 +3,7 @@ package fr.iutvalence.java.projets.demineur.interfaces;
 import java.util.Scanner;
 
 import fr.iutvalence.java.projets.demineur.Cellule;
-import fr.iutvalence.java.projets.demineur.Position;
+import fr.iutvalence.java.projets.demineur.mvc.Position;
 
 public class JoueurClavier implements InterfaceJoueur
 {
