@@ -17,9 +17,15 @@ public interface InterfaceAffichage
 	
 	/**
 	 * Méthode permettant d'afficher un message
-	 * @param message Message a ecrire sur la console
+	 * @param chaine Chaine de caractère à afficher
 	 */
 	public void afficherMsg(String chaine);	
+	
+	/**
+	 * Méthode permettant d'afficher un message spécifiant au joueur que celui-ci à perdu
+	 * @param compteur Nombre de mines qu'il restait à découvrir
+	 */
+	public void messageGameOver(int compteur);
 	
 	/**
 	 * Message indiquant à l'utilisateur quel cellule celui-ci à choisie

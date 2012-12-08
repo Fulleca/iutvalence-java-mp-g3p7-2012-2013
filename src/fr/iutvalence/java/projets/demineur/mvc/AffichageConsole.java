@@ -32,9 +32,9 @@ public class AffichageConsole implements InterfaceAffichage
 	}
 	
 	@Override
-	public void afficherMsg(String message)
+	public void afficherMsg(String chaine)
 	{
-		System.out.println(message);
+		System.out.println(chaine);
 	}
 	
 	@Override

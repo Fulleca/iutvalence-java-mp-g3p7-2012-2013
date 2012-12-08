@@ -3,8 +3,6 @@ package fr.iutvalence.java.projets.demineur;
 import java.util.Random;
 import java.util.Scanner;
 
-import fr.iutvalence.java.projets.demineur.mvc.AffichageConsole;
-
 /**
  * Classe de gestion d'une partie de demineur
  * classe qui reprendra les autres classes pour pouvoir joue
@@ -14,14 +12,7 @@ import fr.iutvalence.java.projets.demineur.mvc.AffichageConsole;
  */
 
 public class Demineur
-{
-	//-----------------------------------------------------------------------
-	// Attributs
-	//-----------------------------------------------------------------------		
-	private int x;
-	
-	private int y;
-	
+{	
 	/**
 	 * Définition d'une grille ayant pour nom g
 	 */
@@ -248,7 +239,7 @@ public class Demineur
 			}
 			else
 			{
-				System.out.println("ATTENTION ! Il y a " + g.getCellule(x, y).nbMinesVoisines + " mine(s) autour de la cellule [" + (x+1) + "," + (y+1) + "]");
+				System.out.println("ATTENTION ! Il y a " + this.g.getCellule(x, y).nbMinesVoisines + " mine(s) autour de la cellule [" + (x+1) + "," + (y+1) + "]");
 				System.out.println("/** Nombre de case(s) restante(s) à dévouvrir : " + compteur + " **/" );
 				System.out.println("----------------------------------------------------");
 							
@@ -321,7 +312,7 @@ public class Demineur
 			}
 			
 			Cellule c = this.g.getCellule(choixX-1, choixY-1);
-			System.out.println("Cellule choisie : [" + (this.x+1) + "," + (this.y+1) + "]");
+			System.out.println("Cellule choisie : [" + choixX + "," + choixY + "]");
 			
 			
 			// On test si la cellule n'a pas encore été decouverte
@@ -341,7 +332,7 @@ public class Demineur
 			}
 			else
 			{
-				System.out.println("ATTENTION ! Il y a " + g.getCellule(x, y).nbMinesVoisines + " mine(s) autour de la cellule [" + (x+1) + "," + (y+1) + "]");
+				System.out.println("ATTENTION ! Il y a " + this.g.getCellule(choixX, choixY).nbMinesVoisines + " mine(s) autour de la cellule [" + choixX + "," + choixX + "]");
 				System.out.println("/** Nombre de case(s) restante(s) à dévouvrir : " + compteur + " **/" );
 				System.out.println("----------------------------------------------------");
 				
