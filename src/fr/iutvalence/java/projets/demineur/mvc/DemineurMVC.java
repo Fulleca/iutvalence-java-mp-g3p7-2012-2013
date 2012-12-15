@@ -1,16 +1,19 @@
 package fr.iutvalence.java.projets.demineur.mvc;
 
 import java.util.Random;
-import java.util.Scanner;
 
 import fr.iutvalence.java.projets.demineur.Cellule;
 import fr.iutvalence.java.projets.demineur.Grille;
+import fr.iutvalence.java.projets.demineur.exceptions.PositionInvalideException;
+import fr.iutvalence.java.projets.demineur.interfaces.InterfaceAffichage;
+import fr.iutvalence.java.projets.demineur.interfaces.InterfaceJoueur;
 
 /**
- * @author Loic
  * Classe permettant de jouer une partie de demineur
  * en utilisant des interfaces pour pouvoir séparer un Demineur
  * de l'affichage et de l'utilisateur (saisie)
+ * 
+ * @authorLambert Quentin / Chaufournais Loic
  */
 public class DemineurMVC
 {
@@ -26,6 +29,16 @@ public class DemineurMVC
 		 * Définition d'une grille ayant pour nom g
 		 */
 		private Grille g;
+		
+		/**
+		 * 
+		 */
+		private InterfaceAffichage affichage = new AffichageConsole();
+		
+		/**
+		 * 
+		 */
+		private InterfaceJoueur saisieClavier = new JoueurClavier();
 		
 		//-----------------------------------------------------------------------
 		// Constructeurs
@@ -204,13 +217,12 @@ public class DemineurMVC
 			/////-----------------------------------/////
 			int jouer = 1;
 			int compteur = ((this.g.getHauteur()*this.g.getLargeur())-this.g.getNbMines());
-			AffichageConsole affiche = new AffichageConsole();
 			/////-----------------------------------/////
 			/////------------ Programme ------------/////
 			/////-----------------------------------/////
 			try
 			{
-				Thread.sleep(3000);
+				Thread.sleep(2000);
 			}
 			catch (InterruptedException e)
 			{
@@ -225,7 +237,7 @@ public class DemineurMVC
 				int y = mineAleatoire.nextInt(this.g.getHauteur());
 				
 				Cellule c = this.g.getCellule(x,y);
-				affiche.messageChoixCelulle(this.g, x, y);
+				this.affichage.messageChoixCelulle(this.g, x, y);
 				
 				// On test si la cellule n'a pas encore été decouverte
 				// Si elle ne l'a pas été, on décrémente le compteur
@@ -240,11 +252,11 @@ public class DemineurMVC
 				if (c.getPresenceMine())
 				{
 					jouer = 0;
-					affiche.messageGameOver(compteur);
+					this.affichage.messageGameOver(compteur);
 				}
 				else
 				{
-					affiche.messageContinuerAJouer(this.g, x, y, compteur);
+					this.affichage.messageContinuerAJouer(this.g, x, y, compteur);
 								
 					// On test si on a gagné ou pas
 					if (compteur == 0)
@@ -253,10 +265,10 @@ public class DemineurMVC
 						System.out.println("Bravo, vous avez gagné la partie");
 					}
 				}
-				affiche.afficherGrille(this.g);
+				this.affichage.afficherGrille(this.g);
 				try
 				{
-					Thread.sleep(3000);
+					Thread.sleep(2000);
 				}
 				catch (InterruptedException e)
 				{
@@ -269,22 +281,24 @@ public class DemineurMVC
 		
 		/** Méthode permettant à l'utilisateur de jouer une partie de démineur
 		 * en choisissant les cellules sur lesquelles il veut "cliquer"
+		 * @param dem Partie de demineur MVC
+		 * @throws PositionInvalideException  Exception de gestion d'une position invalide
 		 */
-		public void utilisateurJoue()
+		public void utilisateurJoue(DemineurMVC dem) throws PositionInvalideException
 		{
 			/////-----------------------------------/////
 			/////--------- Variable locale ---------/////
 			/////-----------------------------------/////
 			int jouer = 1;
-			int compteur = ((this.g.getHauteur()*this.g.getLargeur())-this.g.getNbMines());
-			AffichageConsole affiche = new AffichageConsole();
+			int compteur = ((this.g.getHauteur()*this.g.getLargeur()-this.g.getNbMines()));
+			
 			
 			/////-----------------------------------/////
 			/////------------ Programme ------------/////
 			/////-----------------------------------/////
 			try
 			{
-				Thread.sleep(3000);
+				Thread.sleep(2000);
 			}
 			catch (InterruptedException e)
 			{
@@ -293,29 +307,17 @@ public class DemineurMVC
 			
 			while (jouer != 0)
 			{
-				// On créer un nouveau scanner permettant de récupérer ce que tape l'utilisateur
-				Scanner sc = new Scanner(System.in);
-				
 				// Saisie de l'abcisse par l'utilisateur
-				System.out.println("veuillez choisir la coordonnée x de la cellule a decouvrir");
-				int choixX = sc.nextInt();
-				while ((choixX > this.g.getLargeur()) || (choixX < 1))
-				{
-					System.out.println("La coordonnée spécifié est introuvable");
-					choixX = sc.nextInt();
-				}
+				System.out.println("veuillez choisir la position de la cellule a decouvrir en entrant " +
+						"tous d'abord sa coordonnée x puis par la suite sa coordonnée y");
 				
-				// Saisie de l'ordonnée par l'utilisateur
-				System.out.println("veuillez choisir la coordonnée y de la cellule a decouvrir");
-				int choixY = sc.nextInt();
-				while ((choixY > this.g.getHauteur()) || (choixY < 1))    
-				{
-					System.out.println("La coordonnée spécifié est introuvable");
-					choixY = sc.nextInt();
-				}
+				if ((this.saisieClavier.getCaseADecouvrir().getX() > this.g.getLargeur()) || (this.saisieClavier.getCaseADecouvrir().getX() < 1))
+				    throw new PositionInvalideException();
+				if ((this.saisieClavier.getCaseADecouvrir().getY() > this.g.getHauteur()) || (this.saisieClavier.getCaseADecouvrir().getY() < 1))
+				    throw new PositionInvalideException();
 				
-				Cellule c = this.g.getCellule(choixX-1, choixY-1);
-				affiche.messageChoixCelulle(this.g, (choixX-1), (choixY-1));   
+				Cellule c = this.g.getCellule(this.saisieClavier.getCaseADecouvrir().getX()-1, this.saisieClavier.getCaseADecouvrir().getY()-1);
+				this.affichage.messageChoixCelulle(this.g, (this.saisieClavier.getCaseADecouvrir().getX()-1), (this.saisieClavier.getCaseADecouvrir().getY()-1));   
 				
 				
 				// On test si la cellule n'a pas encore été decouverte
@@ -331,11 +333,11 @@ public class DemineurMVC
 				if (c.getPresenceMine())
 				{
 					jouer = 0;
-					affiche.messageGameOver(compteur);
+					this.affichage.messageGameOver(compteur);
 				}
 				else
 				{
-					affiche.messageContinuerAJouer(this.g, choixX-1, choixY-1, compteur);
+					this.affichage.messageContinuerAJouer(this.g, this.saisieClavier.getCaseADecouvrir().getX()-1, this.saisieClavier.getCaseADecouvrir().getY()-1, compteur);
 					
 					// On test si on a gagné ou pas
 					if (compteur == 0)
@@ -344,10 +346,10 @@ public class DemineurMVC
 						System.out.println("Bravo, vous avez gagné la partie");
 					}
 				}
-				affiche.afficherGrille(this.g);
+				this.affichage.afficherGrille(this.g);
 				try
 				{
-					Thread.sleep(3000);
+					Thread.sleep(2000);
 				}
 				catch (InterruptedException e)
 				{

@@ -3,8 +3,9 @@ package fr.iutvalence.java.projets.demineur.tests;
 import fr.iutvalence.java.projets.demineur.Demineur;
 
 /**
- * Classe permettant de jouer une partie de démineur aléatoirement
- * @author Loic
+ * Classe test permettant de simuler une partie de démineur joué par l'ordinateur
+ * 
+ * @author Lambert Quentin / Chaufornais Loic
  */
 public class TestPartie
 {

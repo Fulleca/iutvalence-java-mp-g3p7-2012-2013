@@ -1,18 +1,19 @@
 package fr.iutvalence.java.projets.demineur;
 
 /**
- * Classe Grille permettant la gestion d'une grille définie par une largeur, une hauteur et un nombre de mines
+ * Classe permettant de créer un objet grille ayant pour carctéristique une largeur, une hauteur
+ * et un nombre de mine.
  *
- * @author chaufoul
+ * @author Lambert Quentin / Chaufournais Loïc
  */
 public class Grille 
 {
-	//-----------------------------------------------------------------------
-	// <---- Constantes ---->
-	//-----------------------------------------------------------------------
+	//////////////////////////////////////////////////////////////
+	/////////////////////////  CONSTANTES  //////////////////////
+	/////////////////////////////////////////////////////////////
 	
 	/**
-	 * Nombres de lignes par défaut de la grille
+	 * Nombre de lignes par défaut de la grille
 	 */
 	private final static int LARGEUR_DEFAUT = 10;
 	
@@ -26,9 +27,9 @@ public class Grille
 	 */
 	private final static int NB_MINES_DEFAUT = 10;
 	
-	//-----------------------------------------------------------------------
-	// <---- Attributs ---->
-	//-----------------------------------------------------------------------
+	//////////////////////////////////////////////////////////////
+	//////////////////////////  ATTRIBUTS  ///////////////////////
+	/////////////////////////////////////////////////////////////
 	
 	/**
 	 * Largeur de la grille
@@ -41,7 +42,7 @@ public class Grille
 	private final int hauteur;
 	
 	/**
-	 * Nombre de mines présents das la grille
+	 * Nombre de mines présentes dans la grille
 	 */
 	private final int nbMines;
 
@@ -51,9 +52,9 @@ public class Grille
 	 */
 	private Cellule[][] grille;
 	
-	//-----------------------------------------------------------------------
-	// <---- Constructeurs ---->
-	//-----------------------------------------------------------------------
+	//////////////////////////////////////////////////////////////
+	///////////////////////  CONSTRUCTEURS  /////////////////////
+	/////////////////////////////////////////////////////////////
 	
 	/**
 	* Constructeur par défaut d'une grille 
@@ -136,11 +137,9 @@ public class Grille
 		return result;
 	}	
 
-	
-	
-	//-----------------------------------------------------------------------
-	// <---- Accesseurs ---->
-	//-----------------------------------------------------------------------
+	//////////////////////////////////////////////////////////////
+	/////////////////////////  ACCESSEURS  //////////////////////
+	/////////////////////////////////////////////////////////////
 	
 	/**
 	 * Accesseur renvoyant la largeur de la grille
@@ -170,7 +169,7 @@ public class Grille
 	}
 	
 	/**
-	 * Méthode permettant de retourner une cellule
+	 * Accesseur renvoyant une cellule
 	 * @param x abscisse de la cellule se situant dans la grille
 	 * @param y ordonnée de la cellule se situant dans la grille
 	 * @return grille[x][y]
@@ -180,9 +179,9 @@ public class Grille
 		return this.grille[x][y];
 	}
 	
-	//-----------------------------------------------------------------------
-	// <---- Setteur ---->
-	//-----------------------------------------------------------------------
+	//////////////////////////////////////////////////////////////
+	//////////////////////////  SETTEURS  ////////////////////////
+	/////////////////////////////////////////////////////////////
 	
 	/**
 	 * Setteur permetant de changer la visibilité d'une cellule se trouvant 

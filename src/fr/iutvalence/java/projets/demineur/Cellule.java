@@ -5,20 +5,14 @@ package fr.iutvalence.java.projets.demineur;
 /**
  * Classe cellule qui gère l'état d'une cellule, c'est-à-dire si une cellule est cachée, visible et 
  * si celle-ci contient ou non une mine.
- * ATTRIBUTS : visible, presenceMine, nbMinesVoisines
- * CONSTRUCTEURS : Cellule(), Cellule(boolean d, int nb, boolean p)
- * METHODES : visible(), cacher(), ouiMine(), nonMine(), toString()
- * ACCESSEURS : getVisibilite(), getPresenceMine(), getNbMinesVoisines()
- * MUTATEURS : setVisibilite(boolean visible), setPresenceMine(boolean presenceMine), setNbMinesVoisines(int nbMinesVoisines)
-
- * @author chaufoul
+ *
+ * @author Lambert Quentin / Chaufournais Loïc
  */
 public class Cellule
 {
-	
-	//-----------------------------------------------------------------------
-	// <---- Attributs ---->
-	//-----------------------------------------------------------------------
+	//////////////////////////////////////////////////////////////
+	//////////////////////////  ATTRIBUTS  ///////////////////////
+	/////////////////////////////////////////////////////////////
 
 	/**
 	 * Booléen spécifiant la visibilité d'une cellule.  
@@ -37,9 +31,9 @@ public class Cellule
 	public int nbMinesVoisines;
 		
 	
-	//-----------------------------------------------------------------------
-	// <---- Constructeurs ---->
-	//-----------------------------------------------------------------------
+	//////////////////////////////////////////////////////////////
+	///////////////////////  CONSTRUCTEURS  /////////////////////
+	/////////////////////////////////////////////////////////////
 	
 	/**
 	 * Constructeur d'une Cellule par défaut.
@@ -66,9 +60,9 @@ public class Cellule
 		this.presenceMine = p;
 	}
 	
-	//-----------------------------------------------------------------------
-	// <---- Méthodes ---->
-	//-----------------------------------------------------------------------
+	//////////////////////////////////////////////////////////////
+	//////////////////////////  METHODES  ////////////////////////
+	/////////////////////////////////////////////////////////////
 
 	/**
 	 * Méthode spécifiant qu'une cellule est visible
@@ -138,9 +132,9 @@ public class Cellule
 		return result;
 	}	
 	
-	//-----------------------------------------------------------------------
-	// <---- Accesseurs ---->
-	//-----------------------------------------------------------------------
+	//////////////////////////////////////////////////////////////
+	/////////////////////////  ACCESSEURS  //////////////////////
+	/////////////////////////////////////////////////////////////
 	
 	/**
 	 * Accesseur renvoyant un booléen. Si renvoie "True", alors la cellule est visible, sinon
@@ -172,9 +166,9 @@ public class Cellule
 	}
 	
 
-	//-----------------------------------------------------------------------
-	// <---- Mutateurs ---->
-	//-----------------------------------------------------------------------
+	//////////////////////////////////////////////////////////////
+	//////////////////////////  SETTEURS  ////////////////////////
+	/////////////////////////////////////////////////////////////
 	
 	/**
 	 * Mutateur permettant de modifier l'attribut visible

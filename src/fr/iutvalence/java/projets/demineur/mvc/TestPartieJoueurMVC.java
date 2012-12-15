@@ -1,14 +1,15 @@
 package fr.iutvalence.java.projets.demineur.mvc;
 
-import java.util.Scanner;
-
+import fr.iutvalence.java.projets.demineur.exceptions.MenuInvalideException;
+import fr.iutvalence.java.projets.demineur.exceptions.PositionInvalideException;
 import fr.iutvalence.java.projets.demineur.interfaces.InterfaceAffichage;
+import fr.iutvalence.java.projets.demineur.interfaces.InterfaceConfigDemineur;
 import fr.iutvalence.java.projets.demineur.interfaces.InterfaceJoueur;
-import fr.iutvalence.java.projets.demineur.mvc.DemineurMVC;;
 
 /**
- * @author Loic
- *
+ * Classe permettat de tester une partie de demineurMVC
+ * 
+ * @author Lambert Quentin / Chaufournais Loic
  */
 public class TestPartieJoueurMVC
 {
@@ -23,61 +24,49 @@ public class TestPartieJoueurMVC
 		static InterfaceJoueur choixClavier = new JoueurClavier();
 		
 		/**
-		 * @param args Argument de la fonction main
+		 * Construction d'un objet choixMenu via l'interface "InterfaceConfigDemineur"
 		 */
-		public static void main(String[] args)
+		static InterfaceConfigDemineur choixConfig = new ConfigDemineur();
+		
+		/**
+		 * @param args Argument de la fonction main
+		 * @throws MenuInvalideException Exception choix du menu invalide
+		 */
+		public static void main(String[] args) throws MenuInvalideException
 		{
 			msgConsole.afficherMsg("Veuillez choisir votre mode de jeu (en entrant le numéro correspondant au mode) :");
 			msgConsole.afficherMsg("1 - Grille de jeu par défaut. Taille de 10x10 avec 10 mines ");
 			msgConsole.afficherMsg("2 - Grille de jeu personnalisé. Vous devez spécifier la taille et le nombres de mines de la zone de jeu");
 			msgConsole.afficherMsg("Votre choix :");
 			msgConsole.afficherMsg("-------------------------------------------------------------------------");
-			Scanner sc = new Scanner(System.in);
-			int choixMode = sc.nextInt();
 			
-			// Correspond au premier mode de jeu
-			if (choixMode == 1)
+			if (choixConfig.getChoixConfigGrille() == 1) 
 			{
 				DemineurMVC d = new DemineurMVC();
-				d.utilisateurJoue();
+				try {
+				    d.utilisateurJoue(d);
+				} catch (PositionInvalideException e) {
+				    // TODO Auto-generated catch block
+				    e.printStackTrace();
+				}
 			}
-			// Correspond au second mode de jeu
-			else if (choixMode == 2)
+			else if (choixConfig.getChoixConfigGrille() == 2)
 			{
 				msgConsole.afficherMsg("Veuillez choisir la largeur de la grille");
-				int choixX = sc.nextInt();
+				choixConfig.getChoixConfigGrille();
 				msgConsole.afficherMsg("Veuillez choisir la hauteur de la grille");
-				int choixY = sc.nextInt();
+				choixConfig.getChoixConfigGrille();
 				msgConsole.afficherMsg("Veuillez choisir le nombre de mines de la grille");
-				int choixMines = sc.nextInt();
-				DemineurMVC d = new DemineurMVC(choixX,choixY,choixMines);
-				d.utilisateurJoue();
-			}
-			// Gère le cas ou l'utilisateur n'a pas choisie un mode de jeu
-			else
-			{
-				while ((choixMode != 1) || !(choixMode != 2))
-				{
-					msgConsole.afficherMsg("Erreur - le menu voulu n'existe pas");
-					System.out.println();
-					choixMode = sc.nextInt();
-				}
-				if (choixMode == 1)
-				{
-					DemineurMVC d = new DemineurMVC();
-					d.utilisateurJoue();
-				}
-				else if (choixMode == 2)
-				{
-					msgConsole.afficherMsg("Veuillez choisir la largeur de la grille");
-					int choixX = sc.nextInt();
-					msgConsole.afficherMsg("Veuillez choisir la hauteur de la grille");
-					int choixY = sc.nextInt();
-					msgConsole.afficherMsg("Veuillez choisir le nombre de mines de la grille");
-					int choixMines = sc.nextInt();
-					DemineurMVC d = new DemineurMVC(choixX,choixY,choixMines);
-					d.utilisateurJoue();
+				choixConfig.getChoixConfigGrille();
+				DemineurMVC d = new DemineurMVC(20, 20, 10);	// FIXME  A modifier : pas acces
+				try {
+				    d.utilisateurJoue(d);
+				} catch (PositionInvalideException e) {
+				    // TODO Auto-generated catch block
+				    e.printStackTrace();
 				}
 			}
+			else throw new MenuInvalideException();
+
 		}
 	}

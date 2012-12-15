@@ -2,13 +2,13 @@ package fr.iutvalence.java.projets.demineur.mvc;
 
 import java.util.Scanner;
 
-import fr.iutvalence.java.projets.demineur.interfaces.InterfaceConfigDemineur;
 import fr.iutvalence.java.projets.demineur.interfaces.InterfaceJoueur;
 
 /**
- * @author Loic
- * Classe SaisieClavier regroupant les méthodes de saisie clavier de l'utilisateur
- * Cette classe implémente InterfaceClavier
+ * Classe permettant de gérer les saisies claviers de l'utilisateur via l'implémentation
+ * de l'interface "InterfaceJoueur"
+ * 
+ * @author Lambert Quentin / Chaufournais Loic
  */
 public class JoueurClavier implements InterfaceJoueur
 {
@@ -33,33 +33,25 @@ public class JoueurClavier implements InterfaceJoueur
 		return null;
 	}
 
-	/**
-	 * @return La coordonnée x de la cellule choisi par l'utilisateur
-	 */
+	@Override
 	public int getChoixX()
 	{
 		return this.choixX;
 	}
 
-	/**
-	 * @param choixX Modifie la coordonnée x (choisie par l'utilisateur) de la cellule 
-	 */
+	@Override
 	public void setChoixX(int choixX)
 	{
 		this.choixX = choixX;
 	}
 
-	/**
-	 * @return La coordonnée x de la cellule choisi par l'utilisateur
-	 */
+	@Override
 	public int getChoixY()
 	{
 		return this.choixY;
 	}
 
-	/**
-	 * @param choixY MModifie la coordonnée y (choisie par l'utilisateur) de la cellule 
-	 */
+	@Override
 	public void setChoixY(int choixY)
 	{
 		this.choixY = choixY;

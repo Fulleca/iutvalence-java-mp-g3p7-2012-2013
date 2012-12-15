@@ -2,36 +2,35 @@ package fr.iutvalence.java.projets.demineur;
 
 import java.util.Random;
 import java.util.Scanner;
-
 /**
- * Classe de gestion d'une partie de demineur
- * classe qui reprendra les autres classes pour pouvoir joue
+ * Classe permettant de créer une partie de démineur et de jouer une partie.
  * 
- * stardust00 <setsuna00ql@gmail.com>
- * @Author Lambert & Chaufournais
+ * @author Lambert Quentin / Chaufournais Loïc
  */
-
 public class Demineur
 {	
+	
+	//////////////////////////////////////////////////////////////
+	//////////////////////////  ATTRIBUTS  ///////////////////////
+	/////////////////////////////////////////////////////////////
+	
 	/**
 	 * Définition d'une grille ayant pour nom g
 	 */
 	private Grille g;
 	
-	//-----------------------------------------------------------------------
-	// Constructeurs
-	//-----------------------------------------------------------------------
+	//////////////////////////////////////////////////////////////
+	///////////////////////  CONSTRUCTEURS  /////////////////////
+	/////////////////////////////////////////////////////////////
 	
 	/**
-	 * Constructeur par défaut d'un démineur
-	 * Un démineur est une nouvelle grille de jeu 
-	 * Il place les mines aléatoirement dans la grille
+	 * Constructeur par défaut d'une partie de démineur
+	 * Un démineur est une nouvelle grille de jeu de 10x10 et en
+	 * mettant 10 mines aléatoirement dans la grille
 	 */
 	public Demineur()
 	{
 		this.g = new Grille();
-
-
 		//--------------------------------------
 		//--- Géneration aléatoire des mines ---
 		//--------------------------------------
@@ -104,9 +103,9 @@ public class Demineur
 	
 
 	/**
-	 * Constructeur personnalisé d'un démineur
-	 * Un démineur est une nouvelle zone de jeu
-	 * Le constructeur génère aléatoirement un nombre nombresMines
+	 * Constructeur personnalisé d'une partie démineur.
+	 * Le constructeur créer une nouvelle grille de largeur x et de hauteur
+	 * y. Puis le constructeur rempli la grille de nombresMines mines de manière aléatoire
 	 * de mines dans la grille x par y
 	 * @param x largeur de la grille
 	 * @param y hauteur de la grille
@@ -184,11 +183,15 @@ public class Demineur
 				this.g.getCellule(i, j).setNbMinesVoisines(nbMines);
 			}
 		}
-	}	
+	}
+	
+	//////////////////////////////////////////////////////////////
+	//////////////////////////  METHODES  ////////////////////////
+	/////////////////////////////////////////////////////////////
 	
 	/**
-	 * Méthode permettant de rendre indépendant le démineur
-	 * Le démineur joue une partie de démineur et peut gagner ou perdre
+	 * Méthode permettant à l'ordinateur de jouer une partie de démineur tous seul
+	 * L'ordinateur peut gagner ou perdre
 	 */
 	public void jouer()
 	{
@@ -201,6 +204,7 @@ public class Demineur
 		/////-----------------------------------/////
 		/////------------ Programme ------------/////
 		/////-----------------------------------/////
+		System.out.println(this.g.toString());
 		try
 		{
 			Thread.sleep(3000);
@@ -265,7 +269,7 @@ public class Demineur
 	}
 	
 	/** Méthode permettant à l'utilisateur de jouer une partie de démineur
-	 * en choisissant les cellules sur lesquelles il veut "cliquer"
+	 * en ASCII art en choisissant les cellules qu'il veut découvrir
 	 */
 	public void utilisateurJoue()
 	{

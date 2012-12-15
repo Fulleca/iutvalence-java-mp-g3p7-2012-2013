@@ -3,28 +3,38 @@ package fr.iutvalence.java.projets.demineur.tests;
 import fr.iutvalence.java.projets.demineur.Grille;
  
 /**
- * Classe de test pour vérifier que l'affichage fonctionne
+ * Classe de test permettant d'afficher une simple grille pour vérifier le fonctionnement de l'affichage
  * 
- * @author chaufoul
+ * @author Lambert Quentin / Chaufournais Loic
  */
 public class TestGrille
 {
 
 	/**
-	 * Affichage de notre nouvelle Grille avec la méthode toString
+	 * Affichage de deux grilles (par défaut et personnalisé) avec leurs largeur, leurs hauteur et leurs 
+	 * nombres de mines
 	 * @param args Argument de la fonction main
 	 */
 	public static void main(String[] args)
 	{
-		Grille G = new Grille(20,5,3);
+		Grille g1 = new Grille();
+		Grille g2 = new Grille(5, 10, 8);
 		
-		System.out.println(G.toString());
+		System.out.println(g1.toString());
 		System.out.print("Hauteur de la grille : ");
-		System.out.println(G.getHauteur());
+		System.out.println(g1.getHauteur());
 		System.out.print("Largeur de la grille : ");
-		System.out.println(G.getLargeur());
+		System.out.println(g1.getLargeur());
 		System.out.print("Nombres de mines de la grille : ");
-		System.out.println(G.getNbMines());
+		System.out.println(g1.getNbMines());
+		
+		System.out.println(g2.toString());
+		System.out.print("Hauteur de la grille : ");
+		System.out.println(g2.getHauteur());
+		System.out.print("Largeur de la grille : ");
+		System.out.println(g2.getLargeur());
+		System.out.print("Nombres de mines de la grille : ");
+		System.out.println(g2.getNbMines());
 	}
 
 }

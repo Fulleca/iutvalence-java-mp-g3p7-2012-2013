@@ -1,11 +1,17 @@
 package fr.iutvalence.java.projets.demineur.mvc;
 
 /**
- * @author Loic
- * Classe permettant de spécifier la position d'une cellule de la grille de jeu
+ * Classe permettant de spécifier le fait qu'une cellule se situe 
+ * à une certaine position dans une position
+ * 
+ * @author Lambert Quentin / Chaufournais Loic
  */
 public class Position
 {
+	//////////////////////////////////////////////////////////////
+	//////////////////////////  ATTRIBUTS  ///////////////////////
+	/////////////////////////////////////////////////////////////
+	
 	/**
 	 * Coordonnée x de la cellule
 	 */
@@ -16,6 +22,10 @@ public class Position
 	 */
 	private final int y;
 
+	//////////////////////////////////////////////////////////////
+	///////////////////////  CONSTRUCTEURS  /////////////////////
+	/////////////////////////////////////////////////////////////
+	
 	/**
 	 * Constructeur par défaut. Permet de créer une position
 	 * @param x Coordonnée x de la cellule
@@ -27,25 +37,11 @@ public class Position
 		this.x = x;
 		this.y = y;
 	}
-
-	/**
-	 * Getteur retournant la coordonné x d'une cellule
-	 * @return La position x d'une cellule
-	 */
-	public int getX()
-	{
-		return this.x;
-	}
-
-	/**
-	 * Getteur retournant la coordonné y d'une cellule
-	 * @return La position y d'une cellule
-	 */
-	public int getY()
-	{
-		return this.y;
-	}
-
+	
+	//////////////////////////////////////////////////////////////
+	//////////////////////////  METHODES  ////////////////////////
+	/////////////////////////////////////////////////////////////
+	
 	@Override
 	public int hashCode()
 	{
@@ -78,6 +74,30 @@ public class Position
 	{
 		return "Position [x=" + this.x + ", y=" + this.y + "]";
 	}
+
+	//////////////////////////////////////////////////////////////
+	/////////////////////////  ACCESSEURS  //////////////////////
+	/////////////////////////////////////////////////////////////
+	
+	/**
+	 * Getteur retournant la coordonné x d'une cellule
+	 * @return La position x d'une cellule
+	 */
+	public int getX()
+	{
+		return this.x;
+	}
+
+	/**
+	 * Getteur retournant la coordonné y d'une cellule
+	 * @return La position y d'une cellule
+	 */
+	public int getY()
+	{
+		return this.y;
+	}
+
+	
 	
 
 	

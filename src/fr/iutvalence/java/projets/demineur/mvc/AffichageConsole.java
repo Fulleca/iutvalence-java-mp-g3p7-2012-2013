@@ -5,25 +5,13 @@ import fr.iutvalence.java.projets.demineur.interfaces.InterfaceAffichage;
 
 
 /**
- * Classe AffichageConsole permettant d'afficher des messages console
- * Cette classe implémente InterfaceAffichage
- * @author Loic
+ * Classe implémentant l'interface "InterfaceAffichage" permettant d'afficher des messages consoles 
+ * en ASCII art
+ * 
+ * @author Lambert Quentin / Chaufournais Loic
  */
 public class AffichageConsole implements InterfaceAffichage
 {
-	/**
-	 * 
-	 */
-	@SuppressWarnings("unused")
-	private String affiche;
-	
-	/**
-	 * Constructeur par défaut  
-	 */
-	public AffichageConsole()
-	{
-		this.affiche = "";
-	}
 	
 	@Override
 	public void afficherGrille(Grille g)
